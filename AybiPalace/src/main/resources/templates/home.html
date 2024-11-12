@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aybi Palace</title>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    color: black;
+}
+
+.container {
+    display: column;
+}
+
+.leftsidebar {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.leftsidebar a {
+	font-family: Merriweather, sans-serif;
+	border-top: 2px solid #fff9;
+    margin: 55px 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 19px;
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.leftsidebar .logo img{
+	height: 85px;
+	vertical-align: middle;
+	margin: 20px auto 0;
+}
+
+.rightsidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 480px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9;	
+    padding: 0 5px;
+}
+
+.rightsidebar .logo img{
+	position: absolute;
+	bottom: 100px;
+	height: 250px;
+	vertical-align: middle;
+	margin-right: 300px;
+}
+
+.menu a {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.menu a1 {
+	font-family: Merriweather, sans-serif;
+    display: block;
+    text-align: left;
+    margin: 25px 60px;
+    font-size: 12px;
+    line-height: 8px;
+    font-style: italic;
+}
+
+.footer-info p {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+    font-weight: bold;
+}
+
+.footer-info p1 {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+}
+
+/* Main Content */
+.main-content {
+    width: 0 280px;
+    background-color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.social-media a {
+    text-decoration: none;
+    margin: 0 5px;
+    font-size: 1.2rem;
+}
+
+/* Hero Section */
+.hero {
+    background: url('home.jpg');
+    height: 100vh;
+    width: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-left: 280px;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+	position: absolute;
+	bottom: 100px;
+	margin-left: 80px;
+    background-color: #412D03;
+    color: #F4E7CA;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.image-card {
+    background: url('https://via.placeholder.com/200') no-repeat center center/cover;
+    width: 30%;
+    height: 150px;
+    border-radius: 5px;
+}
+</style>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="leftsidebar">
+            <div class="logo">
+            	<img src="logo.png" alt="Logo Aybi Palace"></img>
+            </div>
+            <nav class="menu">
+                <a> No Aybi Palace,<br>
+                três serviços exclusivos foram cuidadosamente planejados
+                para criar uma experiência completa, onde conforto e elegância
+                se unem, tornando cada momento de sua estadia verdadeiramente inesquecível.</a>
+                <a style="font-weight: bold; margin-top: 70px; font-size: 14px; font-style: italic; line-height:10px;"> Experiências:<br>_________</a>
+                <a1 href=""> > Lounge da Piscina</a1>
+                <a1 href=""> > Bar</a1>
+                <a1 href=""> > Circuito de Kart</a1>
+                <a style="margin: 50px;"></a>
+            </nav>
+            <div class="footer-info">
+                <p>Contato</p>
+                <p1>aybipalace@gmail.com<br></p1>
+                <p1>+55 (81) 99999-9999</p1>
+                <p style="margin: 20px;"></p>
+                
+                <p>Endereço</p>
+                <p1>Av. Aytobyca Pitola, 123<br>
+                - Recife - Pernambuco,<br>
+                CEP 12312-312</p1>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <a href="#" class="btn">Reserve Agora</a>
+            </section>
+
+        </div>
+        
+        <div class="rightsidebar">
+            <div class="logo">
+            	<img src="biglogo.png" alt="Logo Aybi Palace"></img>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
