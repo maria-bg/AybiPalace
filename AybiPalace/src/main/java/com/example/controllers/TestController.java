@@ -21,4 +21,18 @@ public class TestController {
 		mv.setViewName("/experiencias");
 		return mv;
 	}
+	
+	@GetMapping("/reserva")
+	public ModelAndView reserva() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/reserva");
+		return mv;
+	}
+	
+	@GetMapping("/cadastro")
+	public ModelAndView cadastro() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/cadastro");
+		return mv;
+	}
 }
