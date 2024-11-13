@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - Aybi Palace</title>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="icon" href="home/favicon-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    color: black;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.leftsidebar {
+    flex-shrink: 0;
+    width: 350px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.leftsidebar a {
+    font-family: Merriweather, sans-serif;
+    border-top: 2px solid #fff9;
+    margin: 55px 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 19px;
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.leftsidebar .logo img {
+    height: 95px;
+    vertical-align: middle;
+    margin: 15px auto 0;
+}
+
+.menu a {
+    margin-bottom: 40px;
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu h3 {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    color: #A2845E;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.footer-info {
+	position: relative;
+    margin-top: 150px;
+}
+
+.footer-info p {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+    font-weight: bold;
+}
+
+.footer-info p1 {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+}
+
+.rightsidebar {
+    flex-shrink: 0;
+    width: 415px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9;
+    padding: 10px 5px;
+    text-align: center;
+}
+
+.rightLogo img {
+	position: relative;
+    max-width: 80%;
+    margin-top: 130px;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+}
+
+.hero {
+    flex-grow: 1;
+    background: url('reserva/lobby.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero .square {
+    width: 650px;
+    height: 530px;
+    background: rgba(116, 99, 77, 0.75);
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 15px;
+    padding: 35px;
+}
+
+.square h2 {
+	font-family: Merriweather, serif;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    font-weight: normal;
+    font-size: 43px;
+    color: #ece3d1;
+    margin-top: 20px;
+    letter-spacing: 2px;
+}
+
+.square p {
+    color: #d8c59c;
+    margin: 10px 0;
+    font-size: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    font-style: normal;
+    line-height: 18px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.input-box {
+    width: 300px;
+    margin: 28px auto;
+    text-align: center;
+    position: relative;
+}
+
+.input-box input {
+	color: #F4E7CA;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: Montserrat, sans-serif;
+    border: 0;
+    border-bottom: 1px solid #F4E7CA;
+    text-align: left;
+    width: 70%;
+    background: url(img/icon-calendar.png) no-repeat center right;
+}
+
+.input-box input::placeholder{
+	color: #F4E7CA;
+}
+
+.calendar-container {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: #CEC6B6;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+}
+
+.weekday-name, .month-day, .padding-day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
+}
+
+.month-day {
+    cursor: pointer;
+}
+
+.month-day:hover {
+    background-color: #f0f0f0;
+}
+
+.current-day {
+    background-color: #ffc107;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: normal;
+	cursor: pointer;
+}
+
+.padding-day {
+    color: #FEF6E7;
+    cursor: default;
+}
+
+.calendar-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-toolbar .current-month {
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
+}
+
+.calendar-toolbar .month-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #444;
+}
+
+.calendar-toolbar .month-btn:hover {
+    color: #000;
+}
+
+.seletor select {
+    color: #F4E7CA;
+    font-family: Montserrat, sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 0;
+    border-bottom: 1px solid #F4E7CA;
+    text-align: left;
+    background: url(img/icon-calendar.png) no-repeat center right;
+    width: 70%;
+    box-sizing: border-box; 
+}
+
+
+option {
+	text-align: left;
+	font-family: Montserrat, sans-serif;
+    font-weight: normal;
+    color: black;
+}
+
+.btn {
+    background-color: #412D03;
+    color: #F4E7CA;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    letter-spacing: .10px;
+}
+
+</style>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="leftsidebar">
+            <div class="logo">
+            	<a href="/"><img src="home/logo.png" alt="Logo Aybi Palace"></img></a>
+            </div>
+            <nav class="menu">
+            	<h3>Home</h3>
+                <a href="/">Acomodações</a>
+                <a href="/experiencias">Experiências</a>
+                <a href="/">História</a>
+                <a href="/">Área Administrativa</a>
+            </nav>
+            <div class="footer-info">
+                <p>Contato</p>
+                <p1>aybipalace@gmail.com<br></p1>
+                <p1>+55 (81) 99999-9999</p1>
+                <p style="margin: 20px;"></p>
+                
+                <p>Endereço</p>
+                <p1>Av. Aytobyca Pitola, 123<br>
+                - Recife - Pernambuco,<br>
+                CEP 12312-312</p1>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+	        <section class="hero" id="hero">
+	            <div class="square">
+	            	<h2>Reservas</h2>
+	            	<p>Desfrute da melhor experiência de hospedagem e relaxamento.</p>
+	            	<!-- CHECK IN -->
+	            	<div class="input-box">
+                        <input type="text" id="checkin-input" placeholder="CHECK-IN" readonly>
+                        <div class="calendar-container" id="checkin-calendar">
+                            <div class="card">
+                                <div class="calendar-toolbar">
+                                    <button class="prev month-btn">❮</button>
+                                    <div class="current-month"></div>
+                                    <button class="next month-btn">❯</button>
+                                </div>
+                                <div class="calendar">
+                                    <div class="weekdays">
+                                        <div class="weekday-name">Su</div>
+                                        <div class="weekday-name">Mo</div>
+                                        <div class="weekday-name">Tu</div>
+                                        <div class="weekday-name">We</div>
+                                        <div class="weekday-name">Th</div>
+                                        <div class="weekday-name">Fr</div>
+                                        <div class="weekday-name">Sa</div>
+                                    </div>
+                                    <div class="calendar-days"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CHECK OUT -->
+	            	<div class="input-box">
+                        <input type="text" id="checkout-input" placeholder="CHECK-OUT" readonly>
+                        <div class="calendar-container" id="checkout-calendar">
+                            <div class="card">
+                                <div class="calendar-toolbar">
+                                    <button class="prev month-btn">❮</button>
+                                    <div class="current-month"></div>
+                                    <button class="next month-btn">❯</button>
+                                </div>
+                                <div class="calendar">
+                                    <div class="weekdays">
+                                        <div class="weekday-name">Su</div>
+                                        <div class="weekday-name">Mo</div>
+                                        <div class="weekday-name">Tu</div>
+                                        <div class="weekday-name">We</div>
+                                        <div class="weekday-name">Th</div>
+                                        <div class="weekday-name">Fr</div>
+                                        <div class="weekday-name">Sa</div>
+                                    </div>
+                                    <div class="calendar-days"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-box">
+	                    <div class="seletor">
+			        		<select name="seletor" id="seletor" onchange="showContent()">
+			        			<option value="default">Nº DE ADULTOS</option>
+				            	<option value="1">1</option>
+				            	<option value="2">2</option>
+				        	</select>
+			        	</div>
+	        		</div>
+	        		
+	        		<div class="input-box">
+	                    <div class="seletor">
+			        		<select name="seletor" id="seletor" onchange="showContent()">
+			        			<option value="default">Nº DE DEPENDENTES</option>
+			        			<option value="1">0</option>
+				            	<option value="1">1</option>
+				            	<option value="2">2</option>
+				        	</select>
+			        	</div>
+	        		</div>
+	        		
+				    <a href="/cadastro" type="button" class="btn">Confirme</a>
+	            </div>
+	        </section>
+	    </div>
+        
+        <div class="rightsidebar">
+            <div class="rightLogo">
+            	<img src="home/biglogo.png" alt="Logo Aybi Palace"></img>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function initializeCalendar(inputId, calendarId) {
+            const dateInput = document.getElementById(inputId);
+            const calendarContainer = document.getElementById(calendarId);
+            const currentMonth = calendarContainer.querySelector(".current-month");
+            const calendarDays = calendarContainer.querySelector(".calendar-days");
+            let today = new Date();
+            let date = new Date();
+
+            dateInput.addEventListener("click", () => {
+                calendarContainer.style.display =
+                    calendarContainer.style.display === "none" || calendarContainer.style.display === ""
+                        ? "block"
+                        : "none";
+            });
+
+            function renderCalendar() {
+                const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+                const totalMonthDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+                const startWeekDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+                calendarDays.innerHTML = "";
+
+                for (let i = 0; i < 35; i++) {
+                    if (i < startWeekDay) {
+                        calendarDays.innerHTML += `<div class="padding-day">${prevLastDay - startWeekDay + i + 1}</div>`;
+                    } else if (i >= startWeekDay && i < startWeekDay + totalMonthDay) {
+                        const day = i - startWeekDay + 1;
+                        const isToday =
+                            day === today.getDate() &&
+                            date.getMonth() === today.getMonth() &&
+                            date.getFullYear() === today.getFullYear();
+                        calendarDays.innerHTML += `<div class="${isToday ? "current-day" : "month-day"}">${day}</div>`;
+                    } else {
+                        calendarDays.innerHTML += `<div class="padding-day">${i - startWeekDay - totalMonthDay + 1}</div>`;
+                    }
+                }
+
+                currentMonth.textContent = date
+                    .toLocaleDateString("pt-BR", { month: "long", year: "numeric" })
+                    .replace(/^\w/, (c) => c.toUpperCase());
+            }
+
+            renderCalendar();
+
+            calendarContainer.querySelectorAll(".month-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    date.setMonth(date.getMonth() + (btn.classList.contains("prev") ? -1 : 1));
+                    renderCalendar();
+                });
+            });
+
+            calendarDays.addEventListener("click", (e) => {
+                if (e.target.classList.contains("month-day") || e.target.classList.contains("current-day")) {
+                    const selectedDate = new Date(date.getFullYear(), date.getMonth(), e.target.textContent);
+                    dateInput.value = selectedDate.toLocaleDateString("pt-BR");
+                    calendarContainer.style.display = "none";
+                }
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!calendarContainer.contains(e.target) && e.target !== dateInput) {
+                    calendarContainer.style.display = "none";
+                }
+            });
+        }
+
+        initializeCalendar("checkin-input", "checkin-calendar");
+        initializeCalendar("checkout-input", "checkout-calendar");
+    </script>
+</body>
+</html>
