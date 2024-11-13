@@ -15,4 +15,10 @@ public class TestController {
 		return mv;
 	}
 	
+	@GetMapping("/experiencias")
+	public ModelAndView experiencias() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/experiencias");
+		return mv;
+	}
 }
