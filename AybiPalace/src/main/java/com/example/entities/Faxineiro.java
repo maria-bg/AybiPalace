@@ -1,107 +1,56 @@
 package com.example.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 
 @Entity
 public class Faxineiro {
 
     @Id
-    @Column(length = 15)
     private String cpf;
 
-    @Column(length = 100, nullable = false)
+    @Column(nullable = false, unique = true)
     private String nome;
 
-    private Integer idade;
-
-    @Column(length = 20, nullable = false)
+    private int idade;
     private String cep;
-
-    @Column(length = 100)
     private String rua;
-
-    @Column(length = 100)
     private String bairro;
-
-    private Integer numero;
-
-    @Column(length = 100)
+    private int numero;
     private String email;
+    private float salario;
 
-    private Float salario;
+    @ManyToOne
+    @JoinColumn(name = "FaxineiroGerente")
+    private Faxineiro faxineiroGerente;
 
-    // Getters e Setters
-    public String getCpf() {
-        return cpf;
-    }
+    // Getters e setters
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public String getNome() {
-        return nome;
-    }
+    public int getIdade() { return idade; }
+    public void setIdade(int idade) { this.idade = idade; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public String getCep() { return cep; }
+    public void setCep(String cep) { this.cep = cep; }
 
-    public Integer getIdade() {
-        return idade;
-    }
+    public String getRua() { return rua; }
+    public void setRua(String rua) { this.rua = rua; }
 
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
+    public String getBairro() { return bairro; }
+    public void setBairro(String bairro) { this.bairro = bairro; }
 
-    public String getCep() {
-        return cep;
-    }
+    public int getNumero() { return numero; }
+    public void setNumero(int numero) { this.numero = numero; }
 
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getRua() {
-        return rua;
-    }
+    public float getSalario() { return salario; }
+    public void setSalario(float salario) { this.salario = salario; }
 
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Float getSalario() {
-        return salario;
-    }
-
-    public void setSalario(Float salario) {
-        this.salario = salario;
-    }
+    public Faxineiro getFaxineiroGerente() { return faxineiroGerente; }
+    public void setFaxineiroGerente(Faxineiro faxineiroGerente) { this.faxineiroGerente = faxineiroGerente; }
 }
