@@ -221,32 +221,40 @@ body {
 
         <!-- Main Content -->
         <div class="main-content">
-	        <section class="hero" id="hero">
-	            <div class="square">
-				    <h2>Cadastro</h2>
-				    <p style="font-weight: normal;"> Adulto 01</p>
-				    <div class="input-box">
-				        <input type="text" placeholder="NOME COMPLETO" required>
-				    </div>
-				    <div class="input-box">
-				        <input type="text" placeholder="CPF" required>
-				    </div>
-				    <div class="input-box">
-				        <input type="text" placeholder="DATA DE NASCIMENTO" required>
-				    </div>
-				    <div class="input-box">
-				        <input type="text" placeholder="ENDEREÇO COMPLETO" required>
-				    </div>
-				    <div class="input-box">
-				        <input type="email" placeholder="EMAIL" required>
-				    </div>
-				    <div class="input-box">
-				        <input type="email" placeholder="TELEFONE">
-				    </div>
-				    <button class="btn">Próximo</button>
-				</div>
-	        </section>
-	    </div>
+            <section class="hero" id="hero">
+                <div class="square">
+                    <h2>Cadastro</h2>
+                    <form th:action="@{/hospedes/salvar}" method="post">
+                        <div class="input-box">
+                            <input type="text" name="nome" placeholder="NOME COMPLETO" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" name="cpf" placeholder="CPF" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="number" name="idade" placeholder="IDADE" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" name="cep" placeholder="CEP" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" name="rua" placeholder="RUA" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" name="bairro" placeholder="BAIRRO" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="number" name="numero" placeholder="NUMERO" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="email" name="email" placeholder="EMAIL" required>
+                        </div>
+                        <button class="btn" type="submit">Salvar</button>
+                    </form>
+                    <p th:text="${mensagem}"></p>
+                </div>
+            </section>
+        </div>
         
         <div class="rightsidebar">
             <div class="rightLogo">

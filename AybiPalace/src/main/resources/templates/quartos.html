@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Quartos</title>
+</head>
+<body>
+    <h1>Lista de Quartos</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Número do Quarto</th>
+                <th>Tarifa (R$)</th>
+                <th>Camas</th>
+                <th>Disponibilidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre a lista de quartos -->
+            <tr th:each="quarto : ${quartos}">
+                <td th:text="${quarto[0]}"></td> <!-- Número do Quarto -->
+                <td th:text="${quarto[1]}"></td> <!-- Tarifa -->
+                <td th:text="${quarto[2]}"></td> <!-- Número de Camas -->
+                <td th:text="${quarto[3]}"></td> <!-- Disponibilidade -->
+            </tr>
+            <!-- Caso nenhum quarto esteja registrado -->
+            <tr th:if="${quartos.isEmpty()}">
+                <td colspan="4">Nenhum quarto registrado.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/">Voltar para o início</a>
+</body>
+</html>
+

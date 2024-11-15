@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Hóspede</title>
+</head>
+<body>
+    <h1>Detalhes do Hóspede</h1>
+    <ul>
+        <li><strong>CPF:</strong> <span th:text="${hospede.cpf}"></span></li>
+        <li><strong>Nome:</strong> <span th:text="${hospede.nome}"></span></li>
+        <li><strong>Idade:</strong> <span th:text="${hospede.idade}"></span></li>
+        <li><strong>CEP:</strong> <span th:text="${hospede.cep}"></span></li>
+        <li><strong>Rua:</strong> <span th:text="${hospede.rua}"></span></li>
+        <li><strong>Bairro:</strong> <span th:text="${hospede.bairro}"></span></li>
+        <li><strong>Número:</strong> <span th:text="${hospede.numero}"></span></li>
+        <li><strong>Email:</strong> <span th:text="${hospede.email}"></span></li>
+        <li><strong>Total de Reservas:</strong> <span th:text="${totalReservas}"></span></li>
+    </ul>
+
+    <h2>Quartos Alugados</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Número do Quarto</th>
+                <th>Data de Check-In</th>
+                <th>Data de Check-Out</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre os quartos alugados -->
+            <tr th:each="aluguel : ${quartosAlugados}">
+                <td th:text="${aluguel[0]}"></td> <!-- Número do Quarto -->
+                <td th:text="${#dates.format(aluguel[1], 'dd/MM/yyyy')}"></td> <!-- Data de Check-In -->
+                <td th:text="${#dates.format(aluguel[2], 'dd/MM/yyyy')}"></td> <!-- Data de Check-Out -->
+            </tr>
+            <!-- Caso nenhum quarto tenha sido alugado -->
+            <tr th:if="${quartosAlugados.isEmpty()}">
+                <td colspan="3">Nenhum quarto alugado.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/hospedes">Voltar para a lista</a>
+</body>
+</html>

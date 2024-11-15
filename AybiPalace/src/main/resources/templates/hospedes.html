@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Hóspedes</title>
+</head>
+<body>
+    <h1>Lista de Hóspedes</h1>
+
+    <!-- Formulário de busca -->
+    <form method="get" action="/hospedes">
+        <label for="nome">Buscar por nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite o nome do hóspede">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th th:if="${!buscando}">Pagamento</th> <!-- Coluna de pagamento apenas na lista completa -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Caso esteja buscando por nome -->
+            <tr th:if="${buscando}" th:each="hospede : ${hospedes}">
+                <td>
+                    <a th:href="@{'/hospede/' + ${hospede.cpf}}" th:text="${hospede.nome}"></a>
+                </td>
+                <td th:text="${hospede.cpf}"></td>
+            </tr>
+
+            <!-- Caso esteja listando todos os hóspedes -->
+            <tr th:if="${!buscando}" th:each="hospede : ${hospedes}">
+                <td>
+                    <a th:href="@{'/hospede/' + ${hospede[0]}}" th:text="${hospede[1]}"></a>
+                </td>
+                <td th:text="${hospede[0]}"></td>
+                <td th:text="${hospede[2]}"></td> <!-- Pagamento -->
+            </tr>
+
+            <!-- Caso nenhum hóspede seja encontrado -->
+            <tr th:if="${hospedes.isEmpty()}">
+                <td colspan="3" th:text="${buscando ? 'Nenhum hóspede encontrado com esse nome.' : 'Nenhum hóspede registrado.'}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/">Voltar para o início</a>
+</body>
+</html>
