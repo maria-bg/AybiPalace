@@ -45,21 +45,23 @@ public class HospedeController {
         return "hospedes"; 
     }
 
-
-
-
-
     
     @GetMapping("/hospede/{cpf}")
     public String detalhesHospede(@PathVariable String cpf, Model model) {
+        // Buscar o hóspede
         Hospede hospede = hospedeDAO.buscarHospedePorCpf(cpf);
-        List<Object[]> quartosAlugados = hospedeDAO.buscarQuartosAlugadosPorHospede(cpf);
 
+        // Buscar os quartos alugados, serviços e tarifas do bar realizados pelo hóspede
+        List<Object[]> quartosComServicosEBares = hospedeDAO.buscarQuartosComServicosEBaresPorHospede(cpf);
+
+        // Adicionar os dados ao modelo
         model.addAttribute("hospede", hospede);
-        model.addAttribute("quartosAlugados", quartosAlugados);
+        model.addAttribute("quartosComServicosEBares", quartosComServicosEBares);
 
         return "detalhesHospede";
     }
+
+
 
 
     
