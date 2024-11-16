@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Bartender</title>
+</head>
+<body>
+    <h1>Detalhes do Bartender</h1>
+
+    <h2>Informações Pessoais</h2>
+    <ul>
+        <li><strong>CPF:</strong> <span th:text="${bartender.cpf}"></span></li>
+        <li><strong>Nome:</strong> <span th:text="${bartender.nome}"></span></li>
+        <li><strong>Idade:</strong> <span th:text="${bartender.idade}"></span></li>
+        <li><strong>CEP:</strong> <span th:text="${bartender.cep}"></span></li>
+        <li><strong>Rua:</strong> <span th:text="${bartender.rua}"></span></li>
+        <li><strong>Bairro:</strong> <span th:text="${bartender.bairro}"></span></li>
+        <li><strong>Número:</strong> <span th:text="${bartender.numero}"></span></li>
+        <li><strong>Email:</strong> <span th:text="${bartender.email}"></span></li>
+        <li><strong>Salário:</strong> <span th:text="${bartender.salario}"></span></li>
+    </ul>
+
+    <h2>Pedidos Atendidos</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Hóspede</th>
+                <th>Data</th>
+                <th>Tarifa (R$)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pedido : ${pedidos}">
+                <td th:text="${pedido[0]}"></td> <!-- Nome do Hóspede -->
+                <td th:text="${#dates.format(pedido[1], 'dd/MM/yyyy')}"></td> <!-- Data -->
+                <td th:text="${pedido[2]}"></td> <!-- Tarifa -->
+            </tr>
+            <tr th:if="${pedidos.isEmpty()}">
+                <td colspan="3">Nenhum pedido atendido.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/">Voltar para o início</a>
+</body>
+</html>

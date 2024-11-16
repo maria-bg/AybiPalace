@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Funcionários</title>
+</head>
+<body>
+    <h1>Lista de Funcionários</h1>
+
+    <!-- Campo de Pesquisa -->
+    <form action="/funcionarios" method="get">
+        <input type="text" name="nome" placeholder="Pesquisar por nome" value="" />
+        
+        <!-- Filtro por Função -->
+        <select name="tipo">
+            <option value="">Todos</option>
+            <option value="Faxineiro">Faxineiro</option>
+            <option value="Instrutor">Instrutor</option>
+            <option value="Bartender">Bartender</option>
+        </select>
+
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre todos os funcionários -->
+            <tr th:each="funcionario : ${funcionarios}">
+                <td>
+                    <!-- Nome como link -->
+                    <a th:href="@{${funcionario[2].toLowerCase() + '/' + funcionario[0]}}" th:text="${funcionario[1]}"></a>
+                </td>
+                <td th:text="${funcionario[2]}"></td> <!-- Tipo -->
+            </tr>
+            <!-- Caso nenhum funcionário esteja registrado -->
+            <tr th:if="${funcionarios.isEmpty()}">
+                <td colspan="2">Nenhum funcionário encontrado.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/">Voltar para o início</a>
+</body>
+</html>
