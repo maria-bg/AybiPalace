@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiências - Aybi Palace</title>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="icon" href="home/favicon-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    color: black;
+}
+
+.container {
+    display: column;
+}
+
+.leftsidebar {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.leftsidebar a {
+	font-family: Merriweather, sans-serif;
+	border-top: 2px solid #fff9;
+    margin: 55px 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 19px;
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.leftsidebar .logo img{
+	height: 95px;
+	vertical-align: middle;
+	margin: 15px auto 0;
+}
+
+.experiencias a {
+	font-family: Merriweather, sans-serif;
+    display: block;
+    text-align: left;
+    margin: 15px 65px;
+    font-size: 12px;
+    line-height: 8px;
+    font-style: italic;
+    letter-spacing: 0.6px;
+    color: #000;
+}
+
+.menu a {
+    margin-bottom: 40px;
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu h3 {
+	font-family: Merriweather, sans-serif;
+	font-weight: bold;
+	color: #A2845E;
+	margin-top: 20px;
+	margin-bottom: 60px;
+}
+
+.footer-info {
+	position: absolute;
+	left: 80px;
+    bottom: 30px;
+}
+
+.footer-info p {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+    font-weight: bold;
+}
+
+.footer-info p1 {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+}
+
+.rightsidebar {
+    position: fixed;
+    vertical-align: middle;
+    top: 0;
+    right: 0;
+    width: 415px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9;	
+    padding: 10 5px;
+}
+
+.rightLogo img {
+	position: absolute;
+	right: 70px;
+	bottom: 40px;
+	height: 210px;
+}
+
+.page-content {
+	top: 70px;
+    display: flex;
+    position: relative;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    max-width: 85%
+}
+
+.page-content h1 {
+	font-family: Merriweather, sans-serif;
+	text-align: center;
+	font-weight: normal;
+	color: #A2845E;
+	font-size: 22px;
+}
+
+.page-content p {
+	border-top: 2px solid #fff9;
+    margin: 15px 0;
+    font-size: 13px;
+    font-style: normal;
+    line-height: 18px;
+    letter-spacing: 1px;
+    max-width: 100%;
+    text-align: center;
+}
+
+/* Main Content */
+.main-content {
+    width: 0 280px;
+    background-color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.social-media a {
+    text-decoration: none;
+    margin: 0 5px;
+    font-size: 1.2rem;
+}
+
+/* Hero Section */
+.hero {
+    background: url('experiencias/default.jpg');
+    height: 100vh;
+    width: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-left: 280px;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+	position: absolute;
+	display: flex;
+	bottom: 80px;
+	margin-left: 70px;
+    background-color: #412D03;
+    color: #F4E7CA;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    letter-spacing: .10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    display: none;
+}
+
+
+.seletor-quartos select {
+	font-family: Montserrat, sans-serif;
+	margin-top: 20px;
+    border: 0;
+    border-bottom: 1px solid #A2845E;
+    padding: 5px 0px;
+    margin-bottom: 50px;
+    color: #A2845E;
+    display: block;
+    width: 100%;
+    max-width: 280px;
+}
+
+option {
+	font-family: Montserrat, sans-serif;
+    font-weight: normal;
+    display: block;
+    padding-block-start: 0px;
+    padding-block-end: 1px;
+    min-block-size: 1.2em;
+    padding-inline: 2px;
+    white-space: nowrap;
+}
+</style>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="leftsidebar">
+            <div class="logo">
+            	<a href="/"><img src="home/logo.png" alt="Logo Aybi Palace"></img></a>
+            </div>
+            <nav class="menu">
+            	<h3>Experiências</h3>
+            	<a href="/">Home</a>
+                <a href="/">Acomodações</a>
+                <a href="/">História</a>
+                <a href="/">Área Administrativa</a>
+            </nav>
+            <div class="footer-info">
+                <p>Contato</p>
+                <p1>aybipalace@gmail.com<br></p1>
+                <p1>+55 (81) 99999-9999</p1>
+                <p style="margin: 20px;"></p>
+                
+                <p>Endereço</p>
+                <p1>Av. Aytobyca Pitola, 123<br>
+                - Recife - Pernambuco,<br>
+                CEP 12312-312</p1>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Hero Section -->
+            <section class="hero" id="hero">
+                <a href="/reserva" class="btn">Reservar
+                	<img style="margin-left: 5px" src="https://fairmontrio.com/wp-content/themes/cms/img/icone-reserva.png" alt="Reservar">
+                </a>
+            </section>
+
+        </div>
+        
+        <div class="rightsidebar">
+        	<div class="page-content">
+        		<h1 style="font-style: italic; font-size: 36px; color: #412D03;"> Experiências </h1>
+                
+        		<div class="seletor-quartos">
+	        		<select name="seletor-quartos" id="seletor-quartos" onchange="showContent()">
+		            <option value="default">Escolha a experiência</option>
+		            <option value="piscina">Lounge da Piscina</option>
+		            <option value="bar">Nosso Bar</option>
+		            <option value="kart">Circuito de Kart</option>
+		        	</select>
+	        	</div>
+	        	
+	        	<p class="content" style="display:block; font-size:15px; line-height: 23px;"> Aqui no Aybi Palace, três serviços exclusivos foram cuidadosamente planejados
+                para criar uma experiência completa, onde conforto e elegância
+                se unem, tornando cada momento de sua estadia verdadeiramente inesquecível.
+                Descubra agora novas experiências!</p>
+                
+        	</div>
+        	
+        	<div id="piscina" class="content" style="display:none;">
+		        <div class="page-content">
+        		<h1> Lounge da Piscina </h1>
+        		<p>Relaxe no nosso Lounge da Piscina, um espaço projetado para
+        			momentos de puro descanso e descontração. Entre o brilho da água
+        			e a atmosfera envolvente, aproveite a música suave e um ambiente
+        			onde o tempo parece desacelerar. Perfeito para renovar as energias
+        			e aproveitar cada instante com o máximo de conforto e exclusividade.</p>
+        	</div>
+		    </div>
+		
+		    <div id="bar" class="content" style="display:none;">
+			    <div class="page-content">
+			        <h1> Nosso Bar </h1>
+	        		<p>Descubra o melhor da alta coquetelaria em nosso bar exclusivo,
+	        		onde cada drink é uma experiência cuidadosamente elaborada para surpreender.
+	        		Com um ambiente sofisticado e uma seleção de coquetéis de assinatura,
+	        		cada gole leva você a um novo nível de sabor e refinamento. Perfeito
+	        		para momentos de descontração e encontros inesquecíveis, nosso bar é o
+	        		lugar ideal para apreciar o melhor da mixologia.</p>
+			    </div>
+		    </div>
+		
+		    <div id="kart" class="content" style="display:none;">
+			    <div class="page-content">
+			        <h1> Circuito de Kart </h1>
+	        		<p>Prepare-se para a adrenalina na no nosso Circuito de Kart, onde a
+	        		 velocidade e a diversão se encontram em cada curva. Experimente a
+	        		  emoção de competir em um circuito cheio de energia, ideal para quem
+	        		   busca aventura e momentos inesquecíveis. Aqui, cada volta é uma chance
+	        		    de sentir o espírito da corrida em um ambiente seguro e emocionante.</p>
+			    </div>
+		    </div>
+		    
+		    <div id="default" class="content" style="display:none;">
+		    	<div class="page-content">
+			        <h1> Descubra uma nova experiência </h1>
+	        		<p> No Aybi Palace, três serviços exclusivos foram cuidadosamente planejados
+                	para criar uma experiência completa, onde conforto e elegância
+                	se unem, tornando cada momento de sua estadia verdadeiramente inesquecível.</p>
+			    </div>
+		    </div>
+        	
+            <div class="rightLogo">
+            	<img src="home/biglogo.png" alt="Logo Aybi Palace"></img>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    function showContent() {
+        const select = document.getElementById("seletor-quartos");
+        const value = select.value;
+        
+        document.querySelectorAll('.content').forEach(content => content.style.display = "none");
+
+        if (value) {
+            document.getElementById(value).style.display = "block";
+            const hero = document.getElementById('hero');
+            switch (value) {
+                case 'piscina':
+                    hero.style.backgroundImage = "url('experiencias/piscina.jpg')";
+                    break;
+                case 'bar':
+                    hero.style.backgroundImage = "url('experiencias/bar.jpg')";
+                    break;
+                case 'kart':
+                    hero.style.backgroundImage = "url('experiencias/kart.jpg')";
+                    break;
+                case 'default':
+                    hero.style.backgroundImage = "url('experiencias/default.jpg')";
+                    break;
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

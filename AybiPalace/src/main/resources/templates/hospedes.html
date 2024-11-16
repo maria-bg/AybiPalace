@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Hóspedes</title>
+</head>
+<body>
+    <h1>Lista de Hóspedes</h1>
+
+    <!-- Formulário de busca -->
+    <form method="get" action="/hospedes">
+        <label for="nome">Buscar por nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite o nome do hóspede">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Botão para filtrar pagamentos pendentes -->
+    <form method="get" action="/hospedes">
+        <input type="hidden" name="pendente" value="true">
+        <button type="submit">Filtrar Pagamentos Pendentes</button>
+    </form>
+
+    <!-- Mensagem para indicar o estado atual -->
+    <div>
+        <p th:if="${filtrandoPendentes}">Exibindo apenas hóspedes com pagamentos pendentes.</p>
+        <p th:if="${!filtrandoPendentes && !buscando}">Exibindo todos os hóspedes.</p>
+        <p th:if="${buscando}">Resultados da busca por nome.</p>
+    </div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Pagamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre a lista de hóspedes -->
+            <tr th:each="hospede : ${hospedes}">
+                <td>
+                    <a th:href="@{'/hospede/' + ${hospede[0]}}" th:text="${hospede[1]}"></a>
+                    <!-- Nome como link -->
+                </td>
+                <td th:text="${hospede[0]}"></td> <!-- CPF -->
+                <td th:text="${hospede[2]}"></td> <!-- Pagamento -->
+            </tr>
+
+            <!-- Caso nenhum hóspede seja encontrado -->
+            <tr th:if="${hospedes.isEmpty()}">
+                <td colspan="3">Nenhum hóspede encontrado.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/">Voltar para o início</a>
+</body>
+</html>

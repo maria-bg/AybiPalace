@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Quarto</title>
+</head>
+<body>
+    <h1>Detalhes do Quarto</h1>
+    <ul>
+        <li><strong>Número do Quarto:</strong> <span th:text="${quarto.numero}"></span></li>
+        <li><strong>Tarifa:</strong> <span th:text="${quarto.tarifa}"></span></li>
+        <li><strong>Camas:</strong> <span th:text="${quarto.camas}"></span></li>
+    </ul>
+
+    <h2>Histórico de Limpeza</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Faxineiro</th>
+                <th>Data e Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="limpeza : ${historicoLimpeza}">
+                <td>
+                    <a th:href="@{'/faxineiro/' + ${limpeza[2]}}" th:text="${limpeza[0]}"></a>
+                    <!-- Nome do Faxineiro como link -->
+                </td>
+                <td th:text="${#dates.format(limpeza[1], 'dd/MM/yyyy HH:mm')}"></td> <!-- Data e Hora -->
+            </tr>
+            <tr th:if="${historicoLimpeza.isEmpty()}">
+                <td colspan="2">Nenhuma limpeza registrada.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Clientes que Alugaram o Quarto</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Data de Check-in</th>
+                <th>Data de Check-out</th>
+                <th>Pagamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente[0]}"></td> <!-- Nome do Cliente -->
+                <td th:text="${#dates.format(cliente[1], 'dd/MM/yyyy')}"></td> <!-- Data de Check-in -->
+                <td th:text="${#dates.format(cliente[2], 'dd/MM/yyyy')}"></td> <!-- Data de Check-out -->
+                <td th:text="${cliente[3]}"></td> <!-- Pagamento -->
+            </tr>
+            <tr th:if="${clientes.isEmpty()}">
+                <td colspan="4">Nenhuma reserva registrada.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/quartos">Voltar para a lista de quartos</a>
+</body>
+</html>
