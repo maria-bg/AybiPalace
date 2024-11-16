@@ -11,36 +11,40 @@
         <li><strong>CPF:</strong> <span th:text="${hospede.cpf}"></span></li>
         <li><strong>Nome:</strong> <span th:text="${hospede.nome}"></span></li>
         <li><strong>Idade:</strong> <span th:text="${hospede.idade}"></span></li>
-        <li><strong>CEP:</strong> <span th:text="${hospede.cep}"></span></li>
-        <li><strong>Rua:</strong> <span th:text="${hospede.rua}"></span></li>
-        <li><strong>Bairro:</strong> <span th:text="${hospede.bairro}"></span></li>
-        <li><strong>Número:</strong> <span th:text="${hospede.numero}"></span></li>
         <li><strong>Email:</strong> <span th:text="${hospede.email}"></span></li>
     </ul>
 
-    <h2>Quartos Alugados</h2>
+    <h2>Quartos Alugados, Serviços e Tarifas do Bar</h2>
     <table border="1">
         <thead>
             <tr>
-                <th>Número do Quarto</th>
-                <th>Data de Check-In</th>
-                <th>Data de Check-Out</th>
-                <th>Status de Pagamento</th>
+                <th>Quarto</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Status do Pagamento</th>
+                <th>Instrutor</th>
+                <th>Serviço</th>
+                <th>Tarifa do Bar</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="aluguel : ${quartosAlugados}">
-                <td th:text="${aluguel[0]}"></td> <!-- Número do Quarto -->
-                <td th:text="${#dates.format(aluguel[1], 'dd/MM/yyyy')}"></td> <!-- Data de Check-In -->
-                <td th:text="${#dates.format(aluguel[2], 'dd/MM/yyyy')}"></td> <!-- Data de Check-Out -->
-                <td th:text="${aluguel[3]}"></td> <!-- Status de Pagamento -->
+            <!-- Itera sobre os quartos alugados -->
+            <tr th:each="quarto : ${quartosComServicosEBares}">
+                <td th:text="${quarto[0]}"></td> <!-- Número do quarto -->
+                <td th:text="${#dates.format(quarto[1], 'dd/MM/yyyy')}"></td> <!-- Check-in -->
+                <td th:text="${#dates.format(quarto[2], 'dd/MM/yyyy')}"></td> <!-- Check-out -->
+                <td th:text="${quarto[3] == 1 ? 'Realizado' : 'Pendente'}"></td> <!-- Status do pagamento -->
+                <td th:text="${quarto[5] != null ? quarto[5] : '-'}"></td> <!-- Nome do instrutor -->
+                <td th:text="${quarto[6] != null ? quarto[6] : '-'}"></td> <!-- Tipo do serviço -->
+              <td th:text="${quarto[7] != null ? ('R$ ' + quarto[7]) : '-'}"></td> <!-- Tarifa do bar -->
             </tr>
-            <tr th:if="${quartosAlugados.isEmpty()}">
-                <td colspan="4">Nenhum quarto alugado.</td>
+            <!-- Caso não haja quartos alugados -->
+            <tr th:if="${quartosComServicosEBares.isEmpty()}">
+                <td colspan="7">Nenhum quarto alugado.</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="/hospedes">Voltar para a lista</a>
+    <a href="/hospedes">Voltar para a lista de hóspedes</a>
 </body>
 </html>
