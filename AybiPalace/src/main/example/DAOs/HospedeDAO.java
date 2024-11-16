@@ -116,16 +116,14 @@ public class HospedeDAO {
     
     public List<Object[]> buscarQuartosAlugadosPorHospede(String cpfHospede) {
         String sql = """
-                SELECT a.Fk_Quarto_numero AS numeroQuarto,
-                       a.data_checkin AS dataCheckIn,
-                       a.data_checkOut AS dataCheckOut,
-                       CASE
-                           WHEN a.pago = 1 THEN 'Realizado'
-                           ELSE 'Pendente'
-                       END AS statusPagamento
+                SELECT 
+                    a.Fk_Quarto_numero AS numeroQuarto,
+                    a.data_checkin AS checkin,
+                    a.data_checkOut AS checkout,
+                    a.pago AS pagamento
                 FROM Alugou a
                 WHERE a.Fk_Hospede_cpf = ?
-                ORDER BY a.data_checkin DESC
+                ORDER BY a.data_checkin DESC;
                 """;
 
         List<Object[]> quartosAlugados = new ArrayList<>();
@@ -137,13 +135,12 @@ public class HospedeDAO {
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    Object[] aluguel = new Object[]{
-                            resultSet.getInt("numeroQuarto"),      
-                            resultSet.getDate("dataCheckIn"),      
-                            resultSet.getDate("dataCheckOut"),     
-                            resultSet.getString("statusPagamento") 
-                    };
-                    quartosAlugados.add(aluguel);
+                    quartosAlugados.add(new Object[]{
+                            resultSet.getInt("numeroQuarto"),       // Número do quarto
+                            resultSet.getDate("checkin"),          // Data de check-in
+                            resultSet.getDate("checkout"),         // Data de check-out
+                            resultSet.getInt("pagamento")          // Status do pagamento
+                    });
                 }
             }
         } catch (SQLException e) {
@@ -152,6 +149,7 @@ public class HospedeDAO {
 
         return quartosAlugados;
     }
+
 
     
     public int contarReservasPorHospede(String cpfHospede) {
@@ -240,6 +238,62 @@ public class HospedeDAO {
 
         return hospedes;
     }
+    
+    public List<Object[]> buscarQuartosComServicosEBaresPorHospede(String cpfHospede) {
+        String sql = """
+                SELECT 
+                    a.Fk_Quarto_numero AS numeroQuarto,
+                    a.data_checkin AS checkin,
+                    a.data_checkOut AS checkout,
+                    a.pago AS pagamento,
+                    m.data AS dataServico,
+                    i.nome AS instrutor,
+                    s.Servico_TIPO AS tipoServico,
+                    p.valor AS tarifaBar
+                FROM Alugou a
+                LEFT JOIN ministra_servico_instrutor_hospede m 
+                    ON m.Fk_Hospede_cpf = a.Fk_Hospede_cpf
+                    AND m.data >= a.data_checkin 
+                    AND m.data <= a.data_checkOut
+                LEFT JOIN Instrutor i ON m.Fk_Instrutor_cpf = i.cpf
+                LEFT JOIN Servico s ON m.Fk_Servico_codigo = s.codigo
+                LEFT JOIN pedido_bartender_hospede_servico p 
+                    ON p.Fk_Hospede_cpf = a.Fk_Hospede_cpf
+                    AND p.data >= a.data_checkin 
+                    AND p.data <= a.data_checkOut
+                WHERE a.Fk_Hospede_cpf = ?
+                ORDER BY a.data_checkin DESC, m.data, p.data;
+                """;
+
+        List<Object[]> quartosComServicosEBares = new ArrayList<>();
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, cpfHospede);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    quartosComServicosEBares.add(new Object[]{
+                            resultSet.getInt("numeroQuarto"),       // Número do quarto
+                            resultSet.getDate("checkin"),          // Data de check-in
+                            resultSet.getDate("checkout"),         // Data de check-out
+                            resultSet.getInt("pagamento"),         // Status do pagamento
+                            resultSet.getDate("dataServico"),      // Data do serviço
+                            resultSet.getString("instrutor"),      // Nome do instrutor
+                            resultSet.getInt("tipoServico"),       // Tipo do serviço
+                            resultSet.getDouble("tarifaBar")       // Tarifa do bar como Double
+                    });
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return quartosComServicosEBares;
+    }
+
+
 
 
 }
