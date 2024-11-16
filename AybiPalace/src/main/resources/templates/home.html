@@ -6,6 +6,7 @@
     <title>Aybi Palace</title>
     <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="icon" href="home/favicon-logo.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <style>
@@ -21,13 +22,12 @@ body {
 }
 
 .container {
-    display: column;
+    display: flex;
+    height: 100vh;
 }
 
 .leftsidebar {
-	position: fixed;
-    top: 0;
-    left: 0;
+    flex-shrink: 0;
     width: 280px;
     height: 100vh;
     background: #fff;
@@ -37,8 +37,8 @@ body {
 }
 
 .leftsidebar a {
-	font-family: Merriweather, sans-serif;
-	border-top: 2px solid #fff9;
+    font-family: Merriweather, sans-serif;
+    border-top: 2px solid #fff9;
     margin: 55px 0;
     font-size: 12px;
     font-style: normal;
@@ -47,44 +47,31 @@ body {
     margin: 20px;
 }
 
-.leftsidebar .logo img{
-	height: 85px;
-	vertical-align: middle;
-	margin: 20px auto 0;
-}
-
-.rightsidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 480px;
-    height: 100vh;
-    background: #fff;
-    z-index: 9;	
-    padding: 0 5px;
-}
-
-.rightsidebar .logo img{
-	position: absolute;
-	bottom: 100px;
-	height: 250px;
-	vertical-align: middle;
-	margin-right: 300px;
+.leftsidebar .logo img {
+    height: 95px;
+    vertical-align: middle;
+    margin: 15px auto 0;
 }
 
 .menu a {
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
 }
 
-.menu a1 {
-	font-family: Merriweather, sans-serif;
-    display: block;
-    text-align: left;
-    margin: 25px 60px;
-    font-size: 12px;
-    line-height: 8px;
-    font-style: italic;
+.menu h3 {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    color: #A2845E;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.footer-info {
+	position: relative;
+    margin-top: 150px;
 }
 
 .footer-info p {
@@ -100,35 +87,44 @@ body {
     color: #999;
 }
 
+.rightsidebar {
+    flex-shrink: 0;
+    width: 415px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9;
+    padding: 10px 5px;
+    text-align: center;
+}
+
+.rightLogo img {
+	position: relative;
+    max-width: 80%;
+    margin-top: 130px;
+}
+
+.rightPhotos img {
+	position: relative;
+	top: 70px;
+	max-width: 85%;
+}
+
 /* Main Content */
 .main-content {
-    width: 0 280px;
-    background-color: #fff;
-}
-
-.header {
+    flex-grow: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
 }
 
-.social-media a {
-    text-decoration: none;
-    margin: 0 5px;
-    font-size: 1.2rem;
-}
-
-/* Hero Section */
 .hero {
-    background: url('home.jpg');
-    height: 100vh;
-    width: 50%;
+    flex-grow: 1;
+    background: url('home/lobby.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative;
-    margin-left: 280px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero h1 {
@@ -143,22 +139,17 @@ body {
 
 .hero .btn {
 	position: absolute;
-	bottom: 100px;
-	margin-left: 80px;
-    background-color: #412D03;
-    color: #F4E7CA;
+	display: flex;
+	bottom: 80px;
+    background-color: #C9BAA6;
+    color: black;
     padding: 10px 20px;
-    border: none;
     text-decoration: none;
-    font-weight: bold;
     cursor: pointer;
-}
-
-.image-card {
-    background: url('https://via.placeholder.com/200') no-repeat center center/cover;
-    width: 30%;
-    height: 150px;
-    border-radius: 5px;
+    font-size: 16px;
+    letter-spacing: .10px;
+    align-items: center;
+    justify-content: center;
 }
 </style>
 
@@ -167,18 +158,14 @@ body {
         <!-- Sidebar -->
         <div class="leftsidebar">
             <div class="logo">
-            	<img src="logo.png" alt="Logo Aybi Palace"></img>
+            	<a href="/"><img src="home/logo.png" alt="Logo Aybi Palace"></img></a>
             </div>
             <nav class="menu">
-                <a> No Aybi Palace,<br>
-                três serviços exclusivos foram cuidadosamente planejados
-                para criar uma experiência completa, onde conforto e elegância
-                se unem, tornando cada momento de sua estadia verdadeiramente inesquecível.</a>
-                <a style="font-weight: bold; margin-top: 70px; font-size: 14px; font-style: italic; line-height:10px;"> Experiências:<br>_________</a>
-                <a1 href=""> > Lounge da Piscina</a1>
-                <a1 href=""> > Bar</a1>
-                <a1 href=""> > Circuito de Kart</a1>
-                <a style="margin: 50px;"></a>
+            	<h3>Home</h3>
+                <a href="/acomodacoes">Acomodações</a>
+                <a href="/experiencias">Experiências</a>
+                <a href="/historia">História</a>
+                <a href="/adm">Área Administrativa</a>
             </nav>
             <div class="footer-info">
                 <p>Contato</p>
@@ -196,15 +183,18 @@ body {
         <!-- Main Content -->
         <div class="main-content">
             <!-- Hero Section -->
-            <section class="hero">
-                <a href="#" class="btn">Reserve Agora</a>
+            <section class="hero" id="hero">
+                <a href="/reserva" class="btn">Reserve Agora</a>
             </section>
 
         </div>
         
         <div class="rightsidebar">
-            <div class="logo">
-            	<img src="biglogo.png" alt="Logo Aybi Palace"></img>
+        	<div class ="rightPhotos">
+        		<img src="home/roll.png" alt="Lobby Aybi Palace"></img>
+        	</div>
+            <div class="rightLogo">
+            	<img src="home/biglogo.png" alt="Logo Aybi Palace"></img>
             </div>
         </div>
     </div>
