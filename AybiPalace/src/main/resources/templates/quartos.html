@@ -296,7 +296,7 @@ td a {
                     <!-- Itera sobre a lista de quartos -->
                     <tr th:each="quarto : ${quartos}">
                         <td>
-                            <a th:href="@{'/quarto/' + ${quarto[0]}}" th:text="${quarto[0]}"></a>
+                            <a th:href="@{/quarto/{numero}(numero=${quarto[0]})}" th:text="${quarto[0]}"></a>
                         </td>
                         <td th:text="${quarto[1]}"></td>
                         <td th:text="${quarto[2]}"></td>
