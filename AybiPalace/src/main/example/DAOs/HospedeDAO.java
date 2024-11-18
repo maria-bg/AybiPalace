@@ -2,6 +2,7 @@ package com.example.DAOs;
 
 import javax.sql.DataSource;
 
+import com.example.entities.Dependente;
 import com.example.entities.Hospede;
 
 import java.sql.*;
@@ -293,6 +294,36 @@ public class HospedeDAO {
         return quartosComServicosEBares;
     }
 
+    public List<Dependente> buscarDependentesPorHospede(String cpfHospede) {
+        String sql = """
+                SELECT d.cpf, d.nome, d.idade, d.Fk_Hospede_cpf
+                FROM Dependente d
+                WHERE d.Fk_Hospede_cpf = ?
+                """;
+
+        List<Dependente> dependentes = new ArrayList<>();
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, cpfHospede);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    dependentes.add(new Dependente(
+                            resultSet.getString("cpf"),
+                            resultSet.getString("nome"),
+                            resultSet.getInt("idade"),
+                            resultSet.getString("Fk_Hospede_cpf")
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return dependentes;
+    }
 
 
 
