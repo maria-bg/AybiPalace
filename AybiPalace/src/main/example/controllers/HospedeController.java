@@ -27,24 +27,30 @@ public class HospedeController {
             @RequestParam(value = "nome", required = false) String nome,
             @RequestParam(value = "pendente", required = false) Boolean pendente,
             Model model) {
+        List<Object[]> hospedes;
+
         if (nome != null && !nome.isEmpty()) {
-            List<Object[]> hospedes = hospedeDAO.buscarHospedesPorNome(nome);
-            model.addAttribute("hospedes", hospedes);
-            model.addAttribute("buscando", true); 
+            // Busca por nome
+            hospedes = hospedeDAO.buscarHospedesPorNome(nome);
+            model.addAttribute("buscando", true);
+            model.addAttribute("filtrandoPendentes", false);
         } else if (pendente != null && pendente) {
-            List<Object[]> hospedes = hospedeDAO.buscarHospedesComPagamentoPendente();
-            model.addAttribute("hospedes", hospedes);
+            // Filtra por pagamentos pendentes
+            hospedes = hospedeDAO.buscarHospedesComPagamentoPendente();
             model.addAttribute("buscando", false);
-            model.addAttribute("filtrandoPendentes", true); 
+            model.addAttribute("filtrandoPendentes", true);
         } else {
-            List<Object[]> hospedes = hospedeDAO.buscarHospedesComPagamento();
-            model.addAttribute("hospedes", hospedes);
+            // Exibe todos os hóspedes
+            hospedes = hospedeDAO.buscarHospedesComPagamento();
             model.addAttribute("buscando", false);
             model.addAttribute("filtrandoPendentes", false);
         }
 
+        // Adiciona a lista de hóspedes ao modelo
+        model.addAttribute("hospedes", hospedes);
         return "hospedes"; 
     }
+
 
     
     @GetMapping("/hospede/{cpf}")
