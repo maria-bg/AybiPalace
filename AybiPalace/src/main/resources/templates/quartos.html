@@ -12,7 +12,6 @@
     <form method="get" action="/quartos">
         <label for="filtro">Filtrar por:</label>
         <select name="filtro" id="filtro" onchange="this.form.submit()">
-            <!-- Verifica o valor do filtro e marca o item correspondente como 'selected' -->
             <option value="" th:selected="${filtro == null}">Todos os Quartos</option>
             <option value="disponivel" th:selected="${filtro == 'disponivel'}">Quartos Disponíveis</option>
             <option value="indisponivel" th:selected="${filtro == 'indisponivel'}">Quartos Indisponíveis</option>
@@ -31,7 +30,10 @@
         <tbody>
             <!-- Itera sobre a lista de quartos -->
             <tr th:each="quarto : ${quartos}">
-                <td th:text="${quarto[0]}"></td> <!-- Número do Quarto -->
+                <td>
+                    <!-- Adiciona o link para os detalhes do quarto -->
+                    <a th:href="@{/quarto/{numero}(numero=${quarto[0]})}" th:text="${quarto[0]}"></a>
+                </td>
                 <td th:text="${quarto[1]}"></td> <!-- Tarifa -->
                 <td th:text="${quarto[2]}"></td> <!-- Número de Camas -->
                 <td th:text="${quarto[3]}"></td> <!-- Disponibilidade -->
