@@ -43,6 +43,16 @@ public class QuartoController {
         // Busca os detalhes do quarto
         Quarto quarto = quartoDAO.buscarQuartoPorNumero(numero);
 
+        // Determina a disponibilidade do quarto
+        String disponibilidade = "Disponível";
+        List<Object[]> quartosComDisponibilidade = quartoDAO.buscarQuartosComDisponibilidade();
+        for (Object[] q : quartosComDisponibilidade) {
+            if ((int) q[0] == numero) { // Verifica se o número do quarto corresponde
+                disponibilidade = (String) q[3]; // Pega a disponibilidade
+                break;
+            }
+        }
+
         // Busca o histórico de limpeza do quarto
         List<Object[]> historicoLimpeza = quartoDAO.buscarHistoricoLimpezaPorQuarto(numero);
 
@@ -51,11 +61,13 @@ public class QuartoController {
 
         // Adiciona os dados ao modelo
         model.addAttribute("quarto", quarto);
+        model.addAttribute("disponibilidade", disponibilidade);
         model.addAttribute("historicoLimpeza", historicoLimpeza);
         model.addAttribute("clientes", clientes);
 
         return "detalhesQuarto";
     }
+
 
 
 
