@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.DAOs.HospedeDAO;
+import com.example.entities.Dependente;
 import com.example.entities.Hospede;
 
 import javax.sql.DataSource;
@@ -51,15 +52,20 @@ public class HospedeController {
         // Buscar o hóspede
         Hospede hospede = hospedeDAO.buscarHospedePorCpf(cpf);
 
-        // Buscar os quartos alugados, serviços e tarifas do bar realizados pelo hóspede
+        // Buscar os quartos alugados e serviços do hóspede
         List<Object[]> quartosComServicosEBares = hospedeDAO.buscarQuartosComServicosEBaresPorHospede(cpf);
+
+        // Buscar os dependentes do hóspede
+        List<Dependente> dependentes = hospedeDAO.buscarDependentesPorHospede(cpf);
 
         // Adicionar os dados ao modelo
         model.addAttribute("hospede", hospede);
         model.addAttribute("quartosComServicosEBares", quartosComServicosEBares);
+        model.addAttribute("dependentes", dependentes);
 
         return "detalhesHospede";
     }
+
 
 
 
