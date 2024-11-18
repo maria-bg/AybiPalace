@@ -1,63 +1,374 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Quarto</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerenciamento de Quartos - Aybi Palace</title>
+<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<link rel="icon" href="home/favicon-logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    color: black;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.leftsidebar {
+    flex-shrink: 0;
+    width: 280px;
+    height: 100vh;
+    background: rgb(149, 115, 85, 0.2);
+    z-index: 9;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.leftsidebar a {
+    font-family: Merriweather, sans-serif;
+    margin: 55px 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 19px;
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.leftsidebar .logo img {
+    height: 95px;
+    vertical-align: middle;
+    margin: 15px auto 0;
+}
+
+.menu a {
+    margin-bottom: 40px;
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu h3 {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    color: #A2845E;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.footer-info {
+	position: relative;
+    margin-top: 150px;
+}
+
+.footer-info p {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+    font-weight: bold;
+}
+
+.footer-info p1 {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+}
+
+.main-content {
+    font-family: Merriweather, sans-serif;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-content h1 {
+    margin: 20px;
+    color: #6B4A05;
+}
+
+.square {
+    display: flex;
+	flex-direction: column;
+    width: 1027px;
+    height: 472px;
+    background: #EAE3DD;
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    align-items: flex-start;
+}
+
+.square ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 42%;
+    font-family: Montserrat, sans-serif;
+    padding: 0;
+    margin-left: 280px;
+}
+
+.square ul li {
+    margin: 10px;
+    font-size: 16px;
+}
+
+.tables-container {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.tables-container > div {
+    flex-shrink: 0;
+}
+
+.tables-container > div:first-child {
+    flex-basis: 28%;
+}
+
+.tables-container > div:last-child {
+    flex-basis: 70%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Montserrat, sans-serif;
+    background-color: #F4F4F4;
+    border-radius: 5px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #D8C59C;
+}
+
+th {
+    background-color: #E5E3E1;
+    color: #6B4A05;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #6B4A05;
+    margin-bottom: 10px;
+}
+
+.status {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.status.available {
+    background-color: #4CAF50;
+}
+
+.status.unavailable {
+    background-color: #F44336;
+}
+
+.back-link {
+    text-decoration: none;
+    font-family: Montserrat, sans-serif;
+    color: #412D03;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    text-align: left;
+}
+
+.back-link:hover {
+    color: #A2845E;
+}
+
+.search-filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.search-form {
+    flex-grow: 1; /* Faz a barra de pesquisa ocupar o máximo possível */
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.search-form input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #D8C59C;
+    border-radius: 5px;
+    font-family: Montserrat, sans-serif;
+}
+
+.search-form button {
+    background-color: #6B4A05;
+    color: #F4E7CA;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: Montserrat, sans-serif;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-left: 10px;
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+}
+
+.filter-form label {
+    margin-right: 10px;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    color: #6B4A05;
+}
+
+.filter-form select {
+    padding: 8px;
+    background-color: #CEC6B6;
+    color: #6B4A05;
+    border: 1px solid #D8C59C;
+    border-radius: 5px;
+    font-family: Montserrat, sans-serif;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+</style>
 </head>
 <body>
-    <h1>Detalhes do Quarto</h1>
-    <ul>
-        <li><strong>Número do Quarto:</strong> <span th:text="${quarto.numero}"></span></li>
-        <li><strong>Tarifa:</strong> <span th:text="${quarto.tarifa}"></span></li>
-        <li><strong>Camas:</strong> <span th:text="${quarto.camas}"></span></li>
-    </ul>
-
-    <h2>Histórico de Limpeza</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Faxineiro</th>
-                <th>Data e Hora</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="limpeza : ${historicoLimpeza}">
-                <td>
-                    <a th:href="@{'/faxineiro/' + ${limpeza[2]}}" th:text="${limpeza[0]}"></a>
-                    <!-- Nome do Faxineiro como link -->
-                </td>
-                <td th:text="${#dates.format(limpeza[1], 'dd/MM/yyyy HH:mm')}"></td> <!-- Data e Hora -->
-            </tr>
-            <tr th:if="${historicoLimpeza.isEmpty()}">
-                <td colspan="2">Nenhuma limpeza registrada.</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>Clientes que Alugaram o Quarto</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Data de Check-in</th>
-                <th>Data de Check-out</th>
-                <th>Pagamento</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="cliente : ${clientes}">
-                <td th:text="${cliente[0]}"></td> <!-- Nome do Cliente -->
-                <td th:text="${#dates.format(cliente[1], 'dd/MM/yyyy')}"></td> <!-- Data de Check-in -->
-                <td th:text="${#dates.format(cliente[2], 'dd/MM/yyyy')}"></td> <!-- Data de Check-out -->
-                <td th:text="${cliente[3]}"></td> <!-- Pagamento -->
-            </tr>
-            <tr th:if="${clientes.isEmpty()}">
-                <td colspan="4">Nenhuma reserva registrada.</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="/quartos">Voltar para a lista de quartos</a>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="leftsidebar">
+            <div class="logo">
+            	<a href="/"><img src="/home/logo.png" alt="Logo Aybi Palace"></img></a>
+            </div>
+            <nav class="menu">
+            	<h3>Home</h3>
+                <a href="/acomodacoes">Acomodações</a>
+                <a href="/experiencias">Experiências</a>
+                <a href="/historia">História</a>
+                <a href="/adm">Área Administrativa</a>
+            </nav>
+            <div class="footer-info">
+                <p>Contato</p>
+                <p1>aybipalace@gmail.com<br></p1>
+                <p1>+55 (81) 99999-9999</p1>
+                <p style="margin: 20px;"></p>
+                
+                <p>Endereço</p>
+                <p1>Av. Aytobyca Pitola, 123<br>
+                - Recife - Pernambuco,<br>
+                CEP 12312-312</p1>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <h1>Gerenciamento de Quartos</h1>
+            <div class="square">
+            <a href="/homeGerente" class="back-link">< Voltar</a>
+	            <div class="search-filter-container">
+		            <form method="get" action="/hospedes" class="search-form">
+		                <input type="text" id="nome" name="nome" placeholder="Pesquisar número">
+		                <button type="submit">Buscar</button>
+		            </form>
+		
+					<form method="get" action="/quartos" class="filter-form">
+				        <label for="filtro">Filtrar por: </label>
+				        <select name="filtro" id="filtro" onchange="this.form.submit()">
+				            <option value="" th:selected="${filtro == null}">Todos os Quartos</option>
+				            <option value="disponivel" th:selected="${filtro == 'Disponível'}">Quartos Disponíveis</option>
+				            <option value="indisponivel" th:selected="${filtro == 'Indisponível'}">Quartos Indisponíveis</option>
+				        </select>
+				    </form>
+		        </div>
+                <ul>
+                    <li><strong>Quarto:</strong> <span th:text="${quarto.numero}"></span></li>
+                    <li><strong>Tarifa:</strong> R$<span th:text="${quarto.tarifa}"></span></li>
+                    <li>
+                        <strong>Disponibilidade:</strong>
+                        <span class="status" th:class="'status ' + (${disponibilidade} == 'Disponível' ? 'available' : 'unavailable')"></span>
+                        <span th:text="${disponibilidade}"></span>
+                    </li>
+                </ul>
+                <div class="tables-container">
+			    <div>
+			        <h2>Histórico de Limpeza</h2>
+			        <table>
+			            <thead>
+			                <tr>
+			                    <th>Faxineiro</th>
+			                    <th>Data e Hora</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr th:each="limpeza : ${historicoLimpeza}">
+			                    <td th:text="${limpeza[0]}"></td>
+			                    <td th:text="${#dates.format(limpeza[1], 'dd/MM/yyyy HH:mm')}"></td>
+			                </tr>
+			                <tr th:if="${historicoLimpeza.isEmpty()}">
+			                    <td colspan="2">Nenhuma limpeza registrada.</td>
+			                </tr>
+			            </tbody>
+			        </table>
+			    </div>
+			    <div>
+			        <h2>Reservas Anteriores</h2>
+			        <table>
+			            <thead>
+			                <tr>
+			                    <th>Nome</th>
+			                    <th>Check-In</th>
+			                    <th>Check-Out</th>
+			                    <th>Pagamento</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr th:each="cliente : ${clientes}">
+			                    <td th:text="${cliente[0]}"></td>
+			                    <td th:text="${#dates.format(cliente[1], 'dd/MM/yyyy')}"></td>
+			                    <td th:text="${#dates.format(cliente[2], 'dd/MM/yyyy')}"></td>
+			                    <td>
+			                        <span class="status" th:class="'status ' + (${cliente[3]} == 'Realizado' ? 'available' : 'unavailable')"></span>
+			                        <span th:text="${cliente[3]}"></span>
+			                    </td>
+			                </tr>
+			                <tr th:if="${clientes.isEmpty()}">
+			                    <td colspan="4">Nenhuma reserva registrada.</td>
+			                </tr>
+			            </tbody>
+			        </table>
+			    </div>
+			</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
