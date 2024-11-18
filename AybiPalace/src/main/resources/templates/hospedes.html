@@ -11,7 +11,7 @@
     <!-- Formulário de busca -->
     <form method="get" action="/hospedes">
         <label for="nome">Buscar por nome:</label>
-        <input type="text" id="nome" name="nome" placeholder="Digite o nome do hóspede">
+        <input type="text" id="nome" name="nome" placeholder="Digite o nome do hóspede" th:value="${param.nome}">
         <button type="submit">Buscar</button>
     </form>
 
@@ -28,6 +28,7 @@
         <p th:if="${buscando}">Resultados da busca por nome.</p>
     </div>
 
+    <!-- Tabela de Hóspedes -->
     <table border="1">
         <thead>
             <tr>
