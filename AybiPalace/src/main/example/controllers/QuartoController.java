@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.DAOs.QuartoDAO;
 import com.example.entities.Quarto;
@@ -21,14 +22,21 @@ public class QuartoController {
     }
 
     @GetMapping("/quartos")
-    public String listarQuartos(Model model) {
-        List<Object[]> quartos = quartoDAO.buscarQuartosComDisponibilidade();
+    public String listarQuartos(@RequestParam(value = "filtro", required = false) String filtro, Model model) {
+        List<Object[]> quartosComDisponibilidade = quartoDAO.buscarQuartosComDisponibilidade();
 
-        // Adiciona os quartos ao modelo
-        model.addAttribute("quartos", quartos);
+        // Realiza a filtragem em memória com base no valor do filtro
+        if ("disponivel".equalsIgnoreCase(filtro)) {
+            quartosComDisponibilidade.removeIf(quarto -> !"Disponível".equalsIgnoreCase((String) quarto[3]));
+        } else if ("indisponivel".equalsIgnoreCase(filtro)) {
+            quartosComDisponibilidade.removeIf(quarto -> !"Indisponível".equalsIgnoreCase((String) quarto[3]));
+        }
 
-        return "quartos"; // Nome do arquivo HTML
+        model.addAttribute("quartos", quartosComDisponibilidade);
+        model.addAttribute("filtro", filtro); // Passa o filtro atual para o modelo
+        return "quartos";
     }
+
 
     @GetMapping("/quarto/{numero}")
     public String detalhesQuarto(@PathVariable int numero, Model model) {
