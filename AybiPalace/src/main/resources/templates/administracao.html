@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aybi Palace</title>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="icon" href="home/favicon-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    color: black;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.leftsidebar {
+    flex-shrink: 0;
+    width: 280px;
+    height: 100vh;
+    background: rgb(149, 115, 85, 0.2);
+    z-index: 9;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.leftsidebar a {
+    font-family: Merriweather, sans-serif;
+    margin: 55px 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 19px;
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.leftsidebar .logo img {
+    height: 95px;
+    vertical-align: middle;
+    margin: 15px auto 0;
+}
+
+.menu a {
+    margin-bottom: 40px;
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu h3 {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    color: #A2845E;
+    margin-top: 20px;
+}
+
+.menu p {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.footer-info {
+	position: relative;
+    margin-top: 111px;
+}
+
+.footer-info p {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+    font-weight: bold;
+}
+
+.footer-info p1 {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    margin-left: 200px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 100px;
+}
+
+.users img {
+    max-width: 185px;
+    height: auto;
+}
+
+.btn {
+    background-color: #EAE3DD;
+    color: #6B4A05;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: .10px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+}
+
+</style>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="leftsidebar">
+            <div class="logo">
+            	<a href="/"><img src="home/logo.png" alt="Logo Aybi Palace"></img></a>
+            </div>
+            <nav class="menu">
+            	<h3>Home</h3>
+            	<a href="/logout"><p>Logout
+            		<img style="margin-left: 2px; max-width: 10px; height: auto" src="/adm/sair.png">
+            	</p></a>
+                <a href="/acomodacoes">Acomodações</a>
+                <a href="/experiencias">Experiências</a>
+                <a href="/historia">História</a>
+                <a href="/adm">Área Administrativa</a>
+            </nav>
+            <div class="footer-info">
+                <p>Contato</p>
+                <p1>aybipalace@gmail.com<br></p1>
+                <p1>+55 (81) 99999-9999</p1>
+                <p style="margin: 20px;"></p>
+                
+                <p>Endereço</p>
+                <p1>Av. Aytobyca Pitola, 123<br>
+                - Recife - Pernambuco,<br>
+                CEP 12312-312</p1>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+			<div class="users">
+			    <a href="/loginGerente"><img src="/adm/user.png" alt="User Image"></a>
+			    <a href="/loginGerente" class="btn">Login (Gerente)
+			    	<img style="margin-left: 6px; max-width: 20px; height: auto" src="/adm/login.png">
+			    </a>
+			</div>
+			<div class="users">
+			    <a href="/loginFaxineiro"><img src="/adm/user.png" alt="User Image"></a>
+			    <a href="/loginFaxineiro" class="btn">Login (Faxineiro Gerente)
+			    	<img style="margin-left: 6px; max-width: 20px; height: auto;" src="/adm/login.png">
+			    </a>
+			</div>
+        </div>
+    </div>
+</body>
+</html>	

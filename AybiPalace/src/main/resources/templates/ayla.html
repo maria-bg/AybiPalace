@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quarto Ayla - Aybi Palace</title>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="icon" href="home/favicon-logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    color: black;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.leftsidebar {
+    flex-shrink: 0;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.leftsidebar a {
+    font-family: Merriweather, sans-serif;
+    border-top: 2px solid #fff9;
+    margin: 55px 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 19px;
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.leftsidebar .logo img {
+    height: 95px;
+    vertical-align: middle;
+    margin: 15px auto 0;
+}
+
+.menu a {
+    margin-bottom: 40px;
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu h3 {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    color: #A2845E;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.footer-info {
+	position: relative;
+    margin-top: 150px;
+}
+
+.footer-info p {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+    font-weight: bold;
+}
+
+.footer-info p1 {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+}
+
+.rightsidebar {
+    flex-shrink: 0;
+    width: 415px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9;
+    padding: 10px 5px;
+    text-align: center;
+}
+
+.rightLogo img {
+	position: relative;
+    max-width: 80%;
+    margin-top: 10px;
+}
+
+.rightPhotos img {
+	position: relative;
+	top: 70px;
+	max-width: 85%;
+}
+
+.page-content {
+	top: 20px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.page-content h1 {
+	font-family: Merriweather, sans-serif;
+	text-align: center;
+	font-weight: normal;
+	color: #9C6C07;
+	font-size: 22px;
+	margin: 10px 0 30px;
+}
+
+.page-content h3 {
+	font-family: Merriweather, sans-serif;
+	text-align: center;
+	font-weight: normal;
+	color: #9C6C07;
+	font-size: 18px;
+}
+
+.page-content p {
+	border-top: 2px solid #fff9;
+    margin: 10px 0 15px;
+    font-size: 13px;
+    font-style: normal;
+    line-height: 18px;
+    letter-spacing: 1px;
+    max-width: 80%;
+    text-align: center;
+}
+
+.page-content .btn {
+	width: 220px;
+	margin: 10px 0 20px 0;
+    background-color: transparent;
+    border: 2px solid #A2845E;
+    color: #A2845E;
+    padding: 10px 20px;
+    font-style: bold;
+    font-size: 16px;
+    letter-spacing: .10px;
+    align-items: center;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+}
+
+.hero {
+	position: relative;
+    flex-grow: 1;
+    background: url('acomodacoes/ayla1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-left,
+.btn-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(65, 45, 3, 0.6);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.btn-left {
+    left: 20px;
+}
+
+.btn-right {
+    right: 20px;
+}
+
+.btn-left:hover,
+.btn-right:hover {
+    background-color: rgba(65, 45, 3, 0.8);
+}
+
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+	position: absolute;
+	display: flex;
+	top: 80px;
+    background-color: #412D03;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: #F4E7CA;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    letter-spacing: .10px;
+    align-items: center;
+    opacity: 0.8;
+  	transition: 0.3s;
+}
+
+.hero .btn:hover {opacity: 1}
+
+h3 a.unstyled-link {
+    all: unset;
+    display: inline;
+}
+
+h3 a.unstyled-link:hover {
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+</style>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="leftsidebar">
+            <div class="logo">
+            	<a href="/"><img src="home/logo.png" alt="Logo Aybi Palace"></img></a>
+            </div>
+            <nav class="menu">
+            	<h3><a href="/acomodacoes" class="unstyled-link">Acomodações</a></h3>
+            	<a href="/">Home</a>
+                <a href="/experiencias">Experiências</a>
+                <a href="/historia">História</a>
+                <a href="/adm">Área Administrativa</a>
+            </nav>
+            <div class="footer-info">
+                <p>Contato</p>
+                <p1>aybipalace@gmail.com<br></p1>
+                <p1>+55 (81) 99999-9999</p1>
+                <p style="margin: 20px;"></p>
+                
+                <p>Endereço</p>
+                <p1>Av. Aytobyca Pitola, 123<br>
+                - Recife - Pernambuco,<br>
+                CEP 12312-312</p1>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Hero Section -->
+            <section class="hero" id="hero">
+			    <button class="btn-left" onclick="changeHeroImage('left')">⬅</button>
+			    <button class="btn-right" onclick="changeHeroImage('right')">➡</button>
+                <a href="/reserva" class="btn">RESERVE AGORA
+                	<img style="margin-left: 5px" src="https://fairmontrio.com/wp-content/themes/cms/img/icone-reserva.png" alt="Reservar">
+                </a>
+            </section>
+
+        </div>
+        
+        <div class="rightsidebar">
+        	<div class="page-content">
+        		<h1 style="font-style: italic; font-size: 36px;"> Espaço Ayla </h1>
+	        	<a class="btn">Suíte Imperial</a>
+	        	<a class="btn">Cama King Size</a>   
+	        	<a class="btn">Arquitetura Luxuosa</a>
+	        	<a class="btn">Tecnologia de Ponta</a>
+	        	<a class="btn">Ambiente Intimista</a>                      	
+        	
+            <div class="rightLogo">
+            	<img src="home/biglogo.png" alt="Logo Aybi Palace"></img>
+            </div>
+        </div>
+    </div>
+    
+    <script>    
+	    const heroImages = [
+	        "acomodacoes/ayla1.jpg",
+	        "acomodacoes/ayla2.jpg",
+	        "acomodacoes/ayla3.jpg"
+	    ];
+	
+	    let currentImageIndex = 0;
+	
+	    function changeHeroImage(direction) {
+	        const hero = document.getElementById("hero");
+	
+	        if (direction === "left") {
+	            currentImageIndex = (currentImageIndex - 1 + heroImages.length) % heroImages.length;
+	        } else if (direction === "right") {
+	            currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+	        }
+	
+	        hero.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`;
+	    }
+</script>
+
+</body>
+</html>
