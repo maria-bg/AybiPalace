@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Dependente</title>
+</head>
+<body>
+    <h1>Detalhes do Dependente</h1>
+    <ul>
+        <li><strong>CPF:</strong> <span th:text="${dependente.cpf}"></span></li>
+        <li><strong>Nome:</strong> <span th:text="${dependente.nome}"></span></li>
+        <li><strong>Idade:</strong> <span th:text="${dependente.idade}"></span></li>
+        <li><strong>Hóspede Principal:</strong> <span th:text="${dependente.fkHospedeCpf}"></span></li>
+    </ul>
+
+    <h2>Hóspedes Relacionados</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Endereço</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre os hóspedes -->
+            <tr th:each="hospede : ${hospedes}">
+                <td th:text="${hospede.cpf}"></td>
+                <td th:text="${hospede.nome}"></td>
+                <td th:text="${hospede.idade}"></td>
+                <td>
+                    <span th:text="${hospede.rua}"></span>, 
+                    <span th:text="${hospede.numero}"></span>, 
+                    <span th:text="${hospede.bairro}"></span>, 
+                    <span th:text="${hospede.cep}"></span>
+                </td>
+                <td th:text="${hospede.email}"></td>
+            </tr>
+            <!-- Caso não haja hóspedes relacionados -->
+            <tr th:if="${hospedes.isEmpty()}">
+                <td colspan="5">Nenhum hóspede relacionado.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/dependentes">Voltar para a lista de dependentes</a>
+</body>
+</html>
