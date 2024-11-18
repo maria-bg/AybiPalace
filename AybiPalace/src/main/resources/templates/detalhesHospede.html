@@ -28,19 +28,40 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Itera sobre os quartos alugados -->
             <tr th:each="quarto : ${quartosComServicosEBares}">
-                <td th:text="${quarto[0]}"></td> <!-- Número do quarto -->
-                <td th:text="${#dates.format(quarto[1], 'dd/MM/yyyy')}"></td> <!-- Check-in -->
-                <td th:text="${#dates.format(quarto[2], 'dd/MM/yyyy')}"></td> <!-- Check-out -->
-                <td th:text="${quarto[3] == 1 ? 'Realizado' : 'Pendente'}"></td> <!-- Status do pagamento -->
-                <td th:text="${quarto[5] != null ? quarto[5] : '-'}"></td> <!-- Nome do instrutor -->
-                <td th:text="${quarto[6] != null ? quarto[6] : '-'}"></td> <!-- Tipo do serviço -->
-              <td th:text="${quarto[7] != null ? ('R$ ' + quarto[7]) : '-'}"></td> <!-- Tarifa do bar -->
+                <td th:text="${quarto[0]}"></td>
+                <td th:text="${#dates.format(quarto[1], 'dd/MM/yyyy')}"></td>
+                <td th:text="${#dates.format(quarto[2], 'dd/MM/yyyy')}"></td>
+                <td th:text="${quarto[3] == 1 ? 'Realizado' : 'Pendente'}"></td>
+                <td th:text="${quarto[5] != null ? quarto[5] : '-'}"></td>
+                <td th:text="${quarto[6] != null ? quarto[6] : '-'}"></td>
+                <td th:text="${quarto[7] != null ? ('R$ ' + quarto[7]) : '-'}"></td>
             </tr>
-            <!-- Caso não haja quartos alugados -->
             <tr th:if="${quartosComServicosEBares.isEmpty()}">
                 <td colspan="7">Nenhum quarto alugado.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Dependentes</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Idade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre os dependentes -->
+            <tr th:each="dependente : ${dependentes}">
+                <td th:text="${dependente.cpf}"></td> <!-- CPF do Dependente -->
+                <td th:text="${dependente.nome}"></td> <!-- Nome do Dependente -->
+                <td th:text="${dependente.idade}"></td> <!-- Idade do Dependente -->
+            </tr>
+            <!-- Caso não haja dependentes -->
+            <tr th:if="${dependentes.isEmpty()}">
+                <td colspan="3">Nenhum dependente registrado.</td>
             </tr>
         </tbody>
     </table>
