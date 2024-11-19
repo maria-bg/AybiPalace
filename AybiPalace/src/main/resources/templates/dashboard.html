@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Informações do Hotel</h1>
+
+    <h2>Média de Tempo que os Hóspedes Passam</h2>
+    <p th:text="'Média de dias: ' + ${mediaTempoHospedes}"></p>
+
+    <h2>Quarto Mais Reservado</h2>
+    <p th:if="${quartoMaisReservado != null}">
+        <span th:text="'Número: ' + ${quartoMaisReservado['numero']}"></span><br>
+        <span th:text="'Total de Reservas: ' + ${quartoMaisReservado['total_reservas']}"></span>
+    </p>
+    <p th:if="${quartoMaisReservado == null}">Nenhum dado disponível.</p>
+
+    <h2>Quarto Menos Reservado</h2>
+    <p th:if="${quartoMenosReservado != null}">
+        <span th:text="'Número: ' + ${quartoMenosReservado['numero']}"></span><br>
+        <span th:text="'Total de Reservas: ' + ${quartoMenosReservado['total_reservas']}"></span>
+    </p>
+    <p th:if="${quartoMenosReservado == null}">Nenhum dado disponível.</p>
+
+    <h2>Serviço Mais Utilizado</h2>
+    <p th:if="${servicoMaisUtilizado != null}">
+        <span th:text="'Tipo de Serviço: ' + ${servicoMaisUtilizado['tipo_servico']}"></span><br>
+        <span th:text="'Total de Utilizações: ' + ${servicoMaisUtilizado['total_utilizacoes']}"></span>
+    </p>
+    <p th:if="${servicoMaisUtilizado == null}">Nenhum dado disponível.</p>
+
+    <h2>Reservas por Tipo de Quarto</h2>
+    <div style="width: 300px; margin: auto;">
+        <canvas id="reservasChart" width="300" height="300"></canvas>
+    </div>
+
+    <script>
+        // Faz uma requisição ao endpoint que retorna os dados
+        fetch('/dados-reservas-por-tipo')
+            .then(response => response.json())
+            .then(data => {
+                // Processa os dados para o gráfico
+                const labels = Object.keys(data);
+                const values = Object.values(data);
+
+                // Configuração do gráfico
+                const ctx = document.getElementById('reservasChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels, // Tipos de quartos
+                        datasets: [{
+                            label: 'Reservas',
+                            data: values, // Quantidade de reservas
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.5)',
+                                'rgba(54, 162, 235, 0.5)',
+                                'rgba(255, 206, 86, 0.5)',
+                                'rgba(75, 192, 192, 0.5)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Erro ao carregar os dados:', error));
+    </script>
+
+    <a href="/">Voltar para o início</a>
+</body>
+</html>
