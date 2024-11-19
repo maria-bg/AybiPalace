@@ -6,7 +6,7 @@
 <title>Gerenciamento de Quartos - Aybi Palace</title>
 <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-<link rel="icon" href="home/favicon-logo.png" type="image/png">
+<link rel="icon" href="/home/favicon-logo.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
 <style>
 * {
@@ -284,7 +284,6 @@ h2 {
             	</p></a>
                 <a href="/acomodacoes">Acomodações</a>
                 <a href="/experiencias">Experiências</a>
-                <a href="/historia">História</a>
                 <a href="/adm">Área Administrativa</a>
             </nav>
             <div class="footer-info">
@@ -303,21 +302,12 @@ h2 {
         <div class="main-content">
             <h1>Gerenciamento de Quartos</h1>
             <div class="square">
-            <a href="/homeGerente" class="back-link">< Voltar</a>
+			<a href="javascript:history.back()" class="back-link">< Voltar</a>
 	            <div class="search-filter-container">
 		            <form method="get" action="/hospedes" class="search-form">
 		                <input type="text" id="nome" name="nome" placeholder="Pesquisar número">
 		                <button type="submit">Buscar</button>
 		            </form>
-		
-					<form method="get" action="/quartos" class="filter-form">
-				        <label for="filtro">Filtrar por: </label>
-				        <select name="filtro" id="filtro" onchange="this.form.submit()">
-				            <option value="" th:selected="${filtro == null}">Todos os Quartos</option>
-				            <option value="disponivel" th:selected="${filtro == 'Disponível'}">Quartos Disponíveis</option>
-				            <option value="indisponivel" th:selected="${filtro == 'Indisponível'}">Quartos Indisponíveis</option>
-				        </select>
-				    </form>
 		        </div>
                 <ul>
                     <li><strong>Quarto:</strong> <span th:text="${quarto.numero}"></span></li>

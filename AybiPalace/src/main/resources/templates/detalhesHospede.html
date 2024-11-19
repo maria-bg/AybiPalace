@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Detalhes do Hóspede</title>
+<title>Detalhes do Hóspede - Aybi Palace</title>
 <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<link rel="icon" href="/home/favicon-logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
 <style>
 * {
     margin: 0;
@@ -280,7 +282,6 @@ td a {
             	</p></a>
                 <a href="/acomodacoes">Acomodações</a>
                 <a href="/experiencias">Experiências</a>
-                <a href="/historia">História</a>
                 <a href="/adm">Área Administrativa</a>
             </nav>
             <div class="footer-info">
@@ -298,7 +299,7 @@ td a {
         <div class="main-content">
             <h1>Detalhes do Hóspede</h1>
             <div class="square">
-            <a href="/homeGerente" class="back-link">< Voltar</a>
+			<a href="javascript:history.back()" class="back-link">< Voltar</a>
                 <ul>
                 	<li class="btn"><span th:text="${hospede.nome}"></span></li>
                     <li><strong>CPF:</strong> <span th:text="${hospede.cpf}"></span></li>

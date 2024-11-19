@@ -1,29 +1,224 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Faxineiros</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Faxineiros - Aybi Palace</title>
+<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<link rel="icon" href="home/favicon-logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    color: black;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.leftsidebar {
+    flex-shrink: 0;
+    width: 280px;
+    height: 100vh;
+    background: rgb(149, 115, 85, 0.2);
+    z-index: 9;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.leftsidebar a {
+    font-family: Merriweather, sans-serif;
+    margin: 55px 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 19px;
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.leftsidebar .logo img {
+    height: 95px;
+    vertical-align: middle;
+    margin: 15px auto 0;
+}
+
+.menu a {
+    margin-bottom: 40px;
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu h3 {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    color: #A2845E;
+    margin-top: 20px;
+}
+
+.menu p {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.footer-info {
+	position: relative;
+    margin-top: 111px;
+}
+
+.footer-info p {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+    font-weight: bold;
+}
+
+.footer-info p1 {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-content h1 {
+    margin-bottom: 20px;
+    color: #6B4A05;
+}
+
+.square {
+    display: flex;
+    flex-direction: column;
+    width: 1027px;
+    height: auto;
+    background: #EAE3DD;
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    align-items: center;
+}
+
+table {
+    width: 96%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #fff;
+}
+
+th {
+    background-color: #E5E3E1;
+    color: #6B4A05;
+}
+
+td {
+    color: #6B4A05;
+}
+
+a {
+    color: #6B4A05;
+}
+
+.back-link {
+    text-decoration: none;
+    font-family: Montserrat, sans-serif;
+    color: #412D03;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
+.back-link:hover {
+    color: #A2845E;
+}
+</style>
 </head>
 <body>
-    <h1>Lista de Faxineiros</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Gerente</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Itera sobre a lista de faxineiros -->
-            <tr th:each="faxineiro : ${faxineiros}">
-                <td>
-                    <!-- Link para os detalhes do faxineiro -->
-                    <a th:href="@{'/faxineiro/' + ${faxineiro.cpf}}" th:text="${faxineiro.nome}"></a>
-                </td>
-                <td th:text="${faxineiro.faxineiroGerente != null ? faxineiro.faxineiroGerente : 'Sem Gerente'}"></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="leftsidebar">
+            <div class="logo">
+            	<a href="/"><img src="home/logo.png" alt="Logo Aybi Palace"></img></a>
+            </div>
+            <nav class="menu">
+            	<h3>Home</h3>
+            	<a href="/adm"><p>Logout
+            		<img style="margin-left: 2px; max-width: 10px; height: auto" src="/adm/sair.png">
+            	</p></a>
+                <a href="/acomodacoes">Acomodações</a>
+                <a href="/experiencias">Experiências</a>
+                <a href="/historia">História</a>
+                <a href="/adm">Área Administrativa</a>
+            </nav>
+            <div class="footer-info">
+                <p>Contato</p>
+                <p1>aybipalace@gmail.com<br></p1>
+                <p1>+55 (81) 99999-9999</p1>
+                <p style="margin: 20px;"></p>
+                
+                <p>Endereço</p>
+                <p1>Av. Aytobyca Pitola, 123<br>
+                - Recife - Pernambuco,<br>
+                CEP 12312-312</p1>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1>Gerenciamento de Faxineiros</h1>
+            <div class="square">
+				<a href="javascript:history.back()" class="back-link">< Voltar</a>
+                <table>
+                    <thead>
+                    	<tr>
+				            <th colspan="2" style="background-color: #898887; color: #FEF6E7; text-align: center; font-weight: bold;">Informações sobre os faxineiros</th>
+				        </tr>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Gerente</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="faxineiro : ${faxineiros}">
+                            <td>
+                                <a th:href="@{'/faxineiro/' + ${faxineiro.cpf}}" th:text="${faxineiro.nome}"></a>
+                            </td>
+                            <td th:text="${faxineiro.faxineiroGerente != null ? faxineiro.faxineiroGerente : 'Sem Gerente'}"></td>
+                        </tr>
+                        <tr th:if="${faxineiros.isEmpty()}">
+                            <td colspan="2">Nenhum faxineiro encontrado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

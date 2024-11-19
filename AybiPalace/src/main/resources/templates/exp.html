@@ -22,12 +22,13 @@ body {
 }
 
 .container {
-    display: flex;
-    height: 100vh;
+    display: column;
 }
 
 .leftsidebar {
-    flex-shrink: 0;
+	position: fixed;
+    top: 0;
+    left: 0;
     width: 280px;
     height: 100vh;
     background: #fff;
@@ -37,8 +38,8 @@ body {
 }
 
 .leftsidebar a {
-    font-family: Merriweather, sans-serif;
-    border-top: 2px solid #fff9;
+	font-family: Merriweather, sans-serif;
+	border-top: 2px solid #fff9;
     margin: 55px 0;
     font-size: 12px;
     font-style: normal;
@@ -47,31 +48,33 @@ body {
     margin: 20px;
 }
 
-.leftsidebar .logo img {
-    height: 95px;
-    vertical-align: middle;
-    margin: 15px auto 0;
+.leftsidebar .logo img{
+	height: 95px;
+	vertical-align: middle;
+	margin: 15px auto 0;
 }
 
-.menu a {
-    margin-bottom: 40px;
+.experiencias a {
+	font-family: Merriweather, sans-serif;
     display: block;
-    font-size: 13px;
-    text-decoration: none;
+    text-align: left;
+    margin: 27px 65px;
+    font-size: 12px;
+    line-height: 8px;
+    font-style: italic;
+    letter-spacing: 0.6px;
     color: #000;
 }
 
-.menu h3 {
-    font-family: Merriweather, sans-serif;
-    font-weight: bold;
-    color: #A2845E;
-    margin-top: 20px;
-    margin-bottom: 60px;
+.menu a {
+    margin-bottom: 10px;
+    display: block;
 }
 
 .footer-info {
-	position: relative;
-    margin-top: 140px;
+	position: absolute;
+	left: 80px;
+    bottom: 30px;
 }
 
 .footer-info p {
@@ -88,43 +91,59 @@ body {
 }
 
 .rightsidebar {
-    flex-shrink: 0;
-    width: 415px;
+    position: fixed;
+    vertical-align: middle;
+    top: 0;
+    right: 0;
     height: 100vh;
     background: #fff;
-    z-index: 9;
-    padding: 10px 5px;
-    text-align: center;
+    z-index: 9;	
+    padding: 10 5px;
 }
 
 .rightLogo img {
-	position: relative;
-    max-width: 80%;
-    margin-top: 130px;
+	position: absolute;
+	left: 120px;
+	bottom: 40px;
+	height: 210px;
 }
 
 .rightPhotos img {
 	position: relative;
 	top: 70px;
-	max-width: 85%;
+	left: 100px;
+	max-width: 60%;
 }
 
 /* Main Content */
 .main-content {
-    flex-grow: 1;
-    display: flex;
+    width: 0 280px;
+    background-color: #fff;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.social-media a {
+    text-decoration: none;
+    margin: 0 5px;
+    font-size: 1.2rem;
+}
+
+/* Hero Section */
 .hero {
-    flex-grow: 1;
-    background: url('home/lobby.jpg');
+    background: url('home/home.jpg');
+    height: 100vh;
+    width: 50%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    margin-left: 280px;
 }
 
 .hero h1 {
@@ -139,17 +158,16 @@ body {
 
 .hero .btn {
 	position: absolute;
-	display: flex;
 	bottom: 80px;
-    background-color: #C9BAA6;
-    color: black;
+	margin-left: 70px;
+    background-color: #412D03;
+    color: #F4E7CA;
     padding: 10px 20px;
+    border: none;
     text-decoration: none;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 16px;
-    letter-spacing: .10px;
-    align-items: center;
-    justify-content: center;
+    font-size: 18px;
 }
 </style>
 
@@ -161,10 +179,18 @@ body {
             	<a href="/"><img src="home/logo.png" alt="Logo Aybi Palace"></img></a>
             </div>
             <nav class="menu">
-            	<h3>Home</h3>
-                <a href="/acomodacoes">Acomodações</a>
-                <a href="/experiencias">Experiências</a>
-                <a href="/adm">Área Administrativa</a>
+                <a> No Aybi Palace,<br>
+                três serviços exclusivos foram cuidadosamente planejados
+                para criar uma experiência completa, onde conforto e elegância
+                se unem, tornando cada momento de sua estadia verdadeiramente inesquecível.</a>
+                <div class="experiencias">
+	                <a href="/experiencias" style="font-weight: bold; margin-top: 70px; font-size: 14px; font-style: italic; line-height:10px; text-align: center;">
+	                Experiências: <br>_________</a>
+	                <a> > Lounge da Piscina</a>
+	                <a> > Bar</a>
+	                <a> > Circuito de Kart</a>
+	                <a style="margin: 50px;"></a>
+                </div>
             </nav>
             <div class="footer-info">
                 <p>Contato</p>
@@ -182,7 +208,7 @@ body {
         <!-- Main Content -->
         <div class="main-content">
             <!-- Hero Section -->
-            <section class="hero" id="hero">
+            <section class="hero">
                 <a href="/reserva" class="btn">Reserve Agora</a>
             </section>
 
@@ -190,7 +216,7 @@ body {
         
         <div class="rightsidebar">
         	<div class ="rightPhotos">
-        		<img src="home/roll.png" alt="Lobby Aybi Palace"></img>
+        		<img src="home/roll.png" alt="Kart Aybi Palace"></img>
         	</div>
             <div class="rightLogo">
             	<img src="home/biglogo.png" alt="Logo Aybi Palace"></img>

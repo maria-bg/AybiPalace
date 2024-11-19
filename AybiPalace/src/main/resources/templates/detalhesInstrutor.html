@@ -1,47 +1,254 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Instrutor</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalhes do Instrutor</title>
+<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    color: black;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.leftsidebar {
+    flex-shrink: 0;
+    width: 280px;
+    height: 100vh;
+    background: rgb(149, 115, 85, 0.2);
+    z-index: 9;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.leftsidebar a {
+    font-family: Merriweather, sans-serif;
+    margin: 55px 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 19px;
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.leftsidebar .logo img {
+    height: 95px;
+    vertical-align: middle;
+    margin: 15px auto 0;
+}
+
+.menu a {
+    margin-bottom: 40px;
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu h3 {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    color: #A2845E;
+    margin-top: 20px;
+}
+
+.menu p {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.footer-info {
+    position: relative;
+    margin-top: 111px;
+}
+
+.footer-info p {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+    font-weight: bold;
+}
+
+.main-content {
+    font-family: Merriweather, sans-serif;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-content h1 {
+    margin: 20px;
+    color: #6B4A05;
+}
+
+.square {
+    display: flex;
+    flex-direction: column;
+    width: 727px;
+    height: auto;
+    background: #EAE3DD;
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    align-items: center;
+}
+
+.square .header {
+    background-color: #CDC7BC;
+    padding: 4px 30px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.square h2 {
+    color: #6B4A05;
+    margin-top: 10px;
+}
+
+.square .header .title {
+    font-size: 24px;
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    color: #FEF6E7;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);
+}
+
+.details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 40px;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 70px;
+}
+
+.details div {
+    font-size: 14px;
+    font-family: Montserrat, sans-serif;
+    color: #463208;
+}
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #fff;
+    text-align: center;
+}
+
+table th {
+    background-color: #898887;
+    color: #FFF;
+    font-family: Merriweather, sans-serif;
+}
+
+table td {
+    font-family: Montserrat, sans-serif;
+    color: #463208;
+}
+
+.back-link {
+    text-decoration: none;
+    font-family: Montserrat, sans-serif;
+    color: #412D03;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    align-self: flex-start;
+    margin-bottom: 40px;
+}
+
+.back-link:hover {
+    color: #A2845E;
+}
+</style>
 </head>
 <body>
-    <h1>Detalhes do Instrutor</h1>
-
-    <h2>Informações Pessoais</h2>
-    <ul>
-        <li><strong>CPF:</strong> <span th:text="${instrutor.cpf}"></span></li>
-        <li><strong>Nome:</strong> <span th:text="${instrutor.nome}"></span></li>
-        <li><strong>Idade:</strong> <span th:text="${instrutor.idade}"></span></li>
-        <li><strong>CEP:</strong> <span th:text="${instrutor.cep}"></span></li>
-        <li><strong>Rua:</strong> <span th:text="${instrutor.rua}"></span></li>
-        <li><strong>Bairro:</strong> <span th:text="${instrutor.bairro}"></span></li>
-        <li><strong>Número:</strong> <span th:text="${instrutor.numero}"></span></li>
-        <li><strong>Email:</strong> <span th:text="${instrutor.email}"></span></li>
-        <li><strong>Salário:</strong> <span th:text="${instrutor.salario}"></span></li>
-    </ul>
-
-    <h2>Pessoas Instruídas</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Data</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Itera sobre as pessoas instruídas -->
-            <tr th:each="instrucao : ${pessoasInstruidas}">
-                <td th:text="${instrucao[0]}"></td> <!-- Nome do Hóspede -->
-                <td th:text="${#dates.format(instrucao[1], 'dd/MM/yyyy')}"></td> <!-- Data -->
-            </tr>
-            <!-- Caso não tenha pessoas instruídas -->
-            <tr th:if="${pessoasInstruidas.isEmpty()}">
-                <td colspan="2">Nenhuma instrução registrada.</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="/instrutores">Voltar para a lista de instrutores</a>
+<div class="container">
+	        <!-- Sidebar -->
+        <div class="leftsidebar">
+            <div class="logo">
+                <a href="/"><img src="/home/logo.png" alt="Logo Aybi Palace"></a>
+            </div>
+            <nav class="menu">
+            	<h3>Home</h3>
+            	<a href="/adm"><p>Logout
+            		<img style="margin-left: 2px; max-width: 10px; height: auto" src="/adm/sair.png">
+            	</p></a>
+                <a href="/acomodacoes">Acomodações</a>
+                <a href="/experiencias">Experiências</a>
+                <a href="/adm">Área Administrativa</a>
+            </nav>
+            <div class="footer-info">
+                <p>Contato</p>
+                <p1>aybipalace@gmail.com<br></p1>
+                <p1>+55 (81) 99999-9999</p1>
+                <p style="margin: 20px;"></p>
+                
+                <p>Endereço</p>
+                <p1>Av. Aytobyca Pitola, 123<br>
+                - Recife - Pernambuco,<br>
+                CEP 12312-312</p1>
+            </div>
+        </div>
+    <div class="main-content">
+        <div class="square">
+			<a href="javascript:history.back()" class="back-link">< Voltar</a>
+            <div class="header">
+                <span class="title" th:text="${instrutor.nome}"></span>
+            </div>
+            <div class="details">
+                <div><strong>CPF:</strong> <span th:text="${instrutor.cpf}"></span></div>
+                <div><strong>CEP:</strong> <span th:text="${instrutor.cep}"></span></div>
+                <div><strong>Idade:</strong> <span th:text="${instrutor.idade}"></span></div>
+                <div><strong>Rua:</strong> <span th:text="${instrutor.rua}"></span></div>
+                <div><strong>Email:</strong> <span th:text="${instrutor.email}"></span></div>
+                <div><strong>Bairro:</strong> <span th:text="${instrutor.bairro}"></span></div>
+                <div><strong>Salário:</strong> <span th:text="${instrutor.salario}"></span></div>
+                <div><strong>Número:</strong> <span th:text="${instrutor.numero}"></span></div>
+            </div>
+            <h2>Pessoas Instruídas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="instrucao : ${pessoasInstruidas}">
+                        <td th:text="${instrucao[0]}"></td>
+                        <td th:text="${#dates.format(instrucao[1], 'dd/MM/yyyy')}"></td>
+                    </tr>
+                    <tr th:if="${pessoasInstruidas.isEmpty()}">
+                        <td colspan="2">Nenhuma instrução registrada.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>
