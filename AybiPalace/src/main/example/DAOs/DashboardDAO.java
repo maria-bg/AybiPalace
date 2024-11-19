@@ -3,6 +3,7 @@ package com.example.DAOs;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class DashboardDAO {
@@ -144,5 +145,47 @@ public class DashboardDAO {
 
         return reservasPorTipo;
     }
+    
+    public Map<String, Integer> contarReservasPorMes() {
+        String sql = """
+                SELECT MONTH(data_checkin) AS mes, MONTHNAME(data_checkin) AS mes_nome, COUNT(*) AS total_reservas
+                FROM Alugou
+                GROUP BY MONTH(data_checkin), MONTHNAME(data_checkin)
+                ORDER BY MONTH(data_checkin);
+                """;
+
+        // Mapa com todos os meses e valores iniciais como 0
+        Map<String, Integer> reservasPorMes = new LinkedHashMap<>();
+        reservasPorMes.put("January", 0);
+        reservasPorMes.put("February", 0);
+        reservasPorMes.put("March", 0);
+        reservasPorMes.put("April", 0);
+        reservasPorMes.put("May", 0);
+        reservasPorMes.put("June", 0);
+        reservasPorMes.put("July", 0);
+        reservasPorMes.put("August", 0);
+        reservasPorMes.put("September", 0);
+        reservasPorMes.put("October", 0);
+        reservasPorMes.put("November", 0);
+        reservasPorMes.put("December", 0);
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                reservasPorMes.put(
+                    resultSet.getString("mes_nome"),
+                    resultSet.getInt("total_reservas")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return reservasPorMes;
+    }
+
+
 
 }
