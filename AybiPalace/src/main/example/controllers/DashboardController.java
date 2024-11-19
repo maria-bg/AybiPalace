@@ -39,11 +39,21 @@ public class DashboardController {
         model.addAttribute("reservasPorTipo", reservasPorTipo);
         return "reservasPorTipo";
     }
-
+    
     @GetMapping("/dados-reservas-por-tipo")
     @ResponseBody
     public Map<String, Integer> dadosReservasPorTipo() {
         return dashboardDAO.contarReservasPorTipoDeQuarto();
     }
+
+    @GetMapping("/dados-reservas-por-mes")
+    @ResponseBody
+    public Map<String, Integer> dadosReservasPorMes() {
+        return dashboardDAO.contarReservasPorMes();
+    }
+
+
+
+
 
 }
