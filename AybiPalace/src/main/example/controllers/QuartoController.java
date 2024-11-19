@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.DAOs.QuartoDAO;
+import com.example.daos.QuartoDAO;
 import com.example.entities.Quarto;
 
 import javax.sql.DataSource;
@@ -25,7 +25,6 @@ public class QuartoController {
     public String listarQuartos(@RequestParam(value = "filtro", required = false) String filtro, Model model) {
         List<Object[]> quartosComDisponibilidade = quartoDAO.buscarQuartosComDisponibilidade();
 
-        // Realiza a filtragem em memória com base no valor do filtro
         if ("disponivel".equalsIgnoreCase(filtro)) {
             quartosComDisponibilidade.removeIf(quarto -> !"Disponível".equalsIgnoreCase((String) quarto[3]));
         } else if ("indisponivel".equalsIgnoreCase(filtro)) {
@@ -33,9 +32,11 @@ public class QuartoController {
         }
 
         model.addAttribute("quartos", quartosComDisponibilidade);
-        model.addAttribute("filtro", filtro); // Passa o filtro atual para o modelo
+        model.addAttribute("filtro", filtro != null ? filtro.trim() : "");
         return "quartos";
     }
+
+
 
 
     @GetMapping("/quarto/{numero}")

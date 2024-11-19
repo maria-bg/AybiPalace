@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.DAOs.HospedeDAO;
+import com.example.daos.HospedeDAO;
 import com.example.entities.Dependente;
 import com.example.entities.Hospede;
 
@@ -70,13 +70,5 @@ public class HospedeController {
         model.addAttribute("dependentes", dependentes);
 
         return "detalhesHospede";
-    }
-
-
-
-
-
-    
-
-
+    } 
 }

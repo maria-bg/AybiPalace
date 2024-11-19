@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.example.DAOs.InstrutorDAO;
+import com.example.daos.InstrutorDAO;
 import com.example.entities.Instrutor;
 
 import javax.sql.DataSource;

@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.DAOs.DashboardDAO;
+import com.example.daos.DashboardDAO;
 
 import javax.sql.DataSource;
 import java.util.Map;

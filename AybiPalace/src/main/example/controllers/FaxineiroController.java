@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.example.DAOs.FaxineiroDAO;
+import com.example.daos.FaxineiroDAO;
 import com.example.entities.Faxineiro;
 
 import javax.sql.DataSource;

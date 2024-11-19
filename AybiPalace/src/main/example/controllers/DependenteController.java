@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.example.DAOs.DependenteDAO;
+import com.example.daos.DependenteDAO;
 import com.example.entities.Dependente;
 import com.example.entities.Hospede;
 
