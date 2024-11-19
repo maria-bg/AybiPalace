@@ -1,301 +1,113 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard - Aybi Palace</title>
-<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
-<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-<link rel="icon" href="home/favicon-logo.png" type="image/png">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Montserrat, sans-serif;
-    color: black;
-}
-
-.container {
-    display: flex;
-    height: 100vh;
-}
-
-.leftsidebar {
-    flex-shrink: 0;
-    width: 280px;
-    height: 100vh;
-    background: rgb(149, 115, 85, 0.2);
-    z-index: 9;
-    padding: 0 5px;
-    text-align: center;
-}
-
-.leftsidebar a {
-    font-family: Merriweather, sans-serif;
-    margin: 55px 0;
-    font-size: 12px;
-    font-style: normal;
-    line-height: 19px;
-    letter-spacing: 1px;
-    margin: 20px;
-}
-
-.leftsidebar .logo img {
-    height: 95px;
-    vertical-align: middle;
-    margin: 15px auto 0;
-}
-
-.menu a {
-    margin-bottom: 40px;
-    display: block;
-    font-size: 13px;
-    text-decoration: none;
-    color: #000;
-}
-
-.menu h3 {
-    font-family: Merriweather, sans-serif;
-    font-weight: bold;
-    color: #A2845E;
-    margin-top: 20px;
-}
-
-.menu p {
-    font-family: Merriweather, sans-serif;
-    font-weight: bold;
-    font-size: 13px;
-    margin-top: 10px;
-    margin-bottom: 60px;
-}
-
-.footer-info {
-	position: relative;
-    margin-top: 111px;
-}
-
-.footer-info p {
-    text-align: center;
-    font-size: 0.65rem;
-    color: #999;
-    font-weight: bold;
-}
-
-.footer-info p1 {
-    text-align: center;
-    font-size: 0.65rem;
-    color: #999;
-}
-
-.main-content {
-    flex-grow: 1;
-    padding: 20px;
-    text-align: center;
-}
-
-.main-content a {
-	display: flex;
-    margin-bottom: 20px;
-}
-
-.main-content h1 {
-    font-family: Merriweather, sans-serif;
-    font-size: 2rem;
-    color: #6B4A05;
-    margin-bottom: 30px;
-}
-
-.dashboard {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.dashboard-panel {
-    flex: 1;
-    min-width: 220px;
-    max-width: 30%;
-    background: rgba(234, 227, 221);
-    padding: 20px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.dashboard-panel h2 {
-    font-family: Merriweather, sans-serif;
-    font-size: 1.2rem;
-    color: #6B4A05;
-    margin-bottom: 15px;
-}
-
-.dashboard-panel p {
-    font-family: Merriweather, sans-serif;
-    font-size: 1.2rem;
-    color: #fff;
-    margin-top: 10px;
-    background-color: #A9A29C;
-    padding: 5px;
-}
-
-.chart-container {
-    margin-top: 40px;
-}
-
-.chart-container canvas {
-    margin: auto;
-    display: block;
-}
-
-.back-link {
-    margin-top: 20px;
-    text-decoration: none;
-    font-family: Montserrat, sans-serif;
-    color: #412D03;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.back-link:hover {
-    color: #A2845E;
-}
-
-.btn {
-	box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24);
-	justify-self: center;
-	font-family: Merriweather, sans-serif;
-    background-color: #FEF6E7;
-    color: #6B4A05;
-    padding: 15px 20px;
-    cursor: pointer;
-    font-size: 23px;
-    letter-spacing: .10px;
-    text-align: center;
-    text-decoration: none;
-    margin-top: 50px;
-    font-weight: bold;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="leftsidebar">
-            <div class="logo">
-                <a href="/"><img src="home/logo.png" alt="Logo Aybi Palace"></a>
-            </div>
-            <nav class="menu">
-            	<h3>Home</h3>
-            	<a href="/logout"><p>Logout
-            		<img style="margin-left: 2px; max-width: 10px; height: auto" src="/adm/sair.png">
-            	</p></a>
-                <a href="/acomodacoes">Acomodações</a>
-                <a href="/experiencias">Experiências</a>
-                <a href="/historia">História</a>
-                <a href="/adm">Área Administrativa</a>
-            </nav>
-            <div class="footer-info">
-                <p>Contato</p>
-                <p1>aybipalace@gmail.com<br></p1>
-                <p1>+55 (81) 99999-9999</p1>
-                <p style="margin: 20px;"></p>
-                
-                <p>Endereço</p>
-                <p1>Av. Aytobyca Pitola, 123<br>
-                - Recife - Pernambuco,<br>
-                CEP 12312-312</p1>
-            </div>
-        </div>
-        <div class="main-content">
-            <h1>Painel Geral</h1>
-            <a href="/homeGerente" class="back-link">< Voltar</a>
-            <div class="dashboard">
-                <div class="dashboard-panel">
-                    <h2>Média de estadia</h2>
-                    <p th:text="'Média de dias: ' + ${mediaTempoHospedes}"></p>
-                </div>
-                
-                <div class="dashboard-panel">
-                    <h2>Quarto mais reservado</h2>
-                    <p th:if="${quartoMaisReservado != null}">
-				        <span th:text="'Número: ' + ${quartoMaisReservado['numero']}"></span><br>
-				        <span th:text="'Total de Reservas: ' + ${quartoMaisReservado['total_reservas']}"></span>
-				    </p>
-				    <p th:if="${quartoMaisReservado == null}">Nenhum dado disponível.</p>
-                </div>
+    <h1>Informações do Hotel</h1>
 
-                <div class="dashboard-panel">
-                    <h2>Quarto menos reservado</h2>
-                    <p th:if="${quartoMenosReservado != null}">
-				        <span th:text="'Número: ' + ${quartoMenosReservado['numero']}"></span><br>
-				        <span th:text="'Total de Reservas: ' + ${quartoMenosReservado['total_reservas']}"></span>
-				    </p>
-				    <p th:if="${quartoMenosReservado == null}">Nenhum dado disponível.</p>
-                </div>
-                
-               <div class="dashboard-panel">
-                    <h2>Serviço mais utilizado</h2>
-                    <p th:if="${servicoMaisUtilizado != null}">
-        				<span th:text="'Tipo de Serviço: ' + ${servicoMaisUtilizado['tipo_servico']}"></span><br>
-				        <span th:text="'Total de Utilizações: ' + ${servicoMaisUtilizado['total_utilizacoes']}"></span>
-				    </p>
-				    <p th:if="${servicoMaisUtilizado == null}">Nenhum dado disponível.</p>
-                </div>
-            </div>
-            
-            <div class="chart-container">
-                <h2>Reservas por Tipo de Quarto</h2>
-                <canvas id="reservasChart" width="200" height="200"></canvas>
-            </div>
-            <script>
-                fetch('/dados-reservas-por-tipo')
-                    .then(response => response.json())
-                    .then(data => {
-                        const labels = Object.keys(data);
-                        const values = Object.values(data);
-
-                        const ctx = document.getElementById('reservasChart').getContext('2d');
-                        new Chart(ctx, {
-                            type: 'pie',
-                            data: {
-                                labels: labels,
-                                datasets: [{
-                                    label: 'Reservas',
-                                    data: values,
-                                    backgroundColor: [
-                                        'rgba(255, 99, 132, 0.5)',
-                                        'rgba(54, 162, 235, 0.5)',
-                                        'rgba(255, 206, 86, 0.5)',
-                                        'rgba(75, 192, 192, 0.5)'
-                                    ],
-                                    borderColor: [
-                                        'rgba(255, 99, 132, 1)',
-                                        'rgba(54, 162, 235, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(75, 192, 192, 1)'
-                                    ],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                plugins: {
-                                    legend: {
-                                        position: 'top'
-                                    }
-                                }
-                            }
-                        });
-                    })
-                    .catch(error => console.error('Erro ao carregar os dados:', error));
-            </script>
-            <a href="/quartos" class="btn">Gerenciar Quartos</a>
-        </div>
+    <h2>Reservas por Tipo de Quarto</h2>
+    <div style="width: 300px; margin: auto;">
+        <canvas id="reservasChart" width="300" height="300"></canvas>
     </div>
+
+    <h2>Reservas por Mês (Todos os Anos)</h2>
+    <div style="width: 100%; max-width: 800px; margin: auto;">
+        <canvas id="reservasMesChart"></canvas>
+    </div>
+
+    <script>
+        // Gráfico de Pizza - Reservas por Tipo de Quarto
+        fetch('/dados-reservas-por-tipo')
+            .then(response => response.json())
+            .then(data => {
+                const labels = Object.keys(data);
+                const values = Object.values(data);
+
+                const ctx = document.getElementById('reservasChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Reservas',
+                            data: values,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.5)',
+                                'rgba(54, 162, 235, 0.5)',
+                                'rgba(255, 206, 86, 0.5)',
+                                'rgba(75, 192, 192, 0.5)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Erro ao carregar os dados:', error));
+
+        // Gráfico de Barras - Reservas por Mês (Todos os Anos)
+        fetch('/dados-reservas-por-mes')
+            .then(response => response.json())
+            .then(data => {
+                const labels = Object.keys(data);
+                const values = Object.values(data);
+
+                const ctx = document.getElementById('reservasMesChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Reservas',
+                            data: values,
+                            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Meses'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Reservas'
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Erro ao carregar os dados:', error));
+    </script>
 </body>
 </html>
