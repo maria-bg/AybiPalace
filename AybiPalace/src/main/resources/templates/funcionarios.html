@@ -1,51 +1,312 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Funcionários</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funcionários - Aybi Palace</title>
+<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<link rel="icon" href="home/favicon-logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    color: black;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.leftsidebar {
+    flex-shrink: 0;
+    width: 280px;
+    height: 100vh;
+    background: rgb(149, 115, 85, 0.2);
+    z-index: 9;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.leftsidebar a {
+    font-family: Merriweather, sans-serif;
+    margin: 55px 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 19px;
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.leftsidebar .logo img {
+    height: 95px;
+    vertical-align: middle;
+    margin: 15px auto 0;
+}
+
+.menu a {
+    margin-bottom: 40px;
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu h3 {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    color: #A2845E;
+    margin-top: 20px;
+}
+
+.menu p {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.footer-info {
+    position: relative;
+    margin-top: 111px;
+}
+
+.footer-info p {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+    font-weight: bold;
+}
+
+.footer-info p1 {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+}
+
+/* Main Content */
+.main-content {
+    font-family: Merriweather, sans-serif;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-content h1 {
+    margin: 20px;
+    color: #6B4A05;
+}
+
+.square {
+    display: flex;
+    flex-direction: column;
+    width: 1027px;
+    height: auto;
+    background: #EAE3DD;
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 20px;
+}
+
+th {
+    padding: 10px;
+    border: 1px solid #fff;
+    font-family: Montserrat, sans-serif;
+    background-color: #E5E3E1;
+    color: #6B4A05;
+    text-align: center;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #fff;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+}
+
+td a {
+    color: #6B4A05;
+}
+
+.back-link {
+    text-decoration: none;
+    font-family: Montserrat, sans-serif;
+    color: #412D03;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.back-link:hover {
+    color: #A2845E;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin: 10px 35px 0 0;
+}
+
+.search-form label {
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    color: #6B4A05;
+}
+
+.search-form input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #D8C59C;
+    border-radius: 5px;
+    font-family: Montserrat, sans-serif;
+}
+
+.search-form button {
+    background-color: #6B4A05;
+    color: #F4E7CA;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: Montserrat, sans-serif;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 5px;
+}
+
+.search-form button:hover {
+    background-color: #8B5E0A;
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+}
+
+.filter-form label {
+    margin-right: 10px;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    color: #6B4A05;
+}
+
+.filter-form select {
+    padding: 8px;
+    background-color: #CEC6B6;
+    color: #6B4A05;
+    border: 1px solid #D8C59C;
+    border-radius: 5px;
+    font-family: Montserrat, sans-serif;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filter-form button {
+    background-color: #6B4A05;
+    color: #F4E7CA;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: Montserrat, sans-serif;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 5px;
+}
+
+</style>
 </head>
 <body>
-    <h1>Lista de Funcionários</h1>
-
-    <!-- Campo de Pesquisa -->
-    <form action="/funcionarios" method="get">
-        <input type="text" name="nome" placeholder="Pesquisar por nome" value="" />
-        
-        <!-- Filtro por Função -->
-        <select name="tipo">
-            <option value="">Todos</option>
-            <option value="Faxineiro">Faxineiro</option>
-            <option value="Instrutor">Instrutor</option>
-            <option value="Bartender">Bartender</option>
-        </select>
-
-        <button type="submit">Filtrar</button>
-    </form>
-
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Tipo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Itera sobre todos os funcionários -->
-            <tr th:each="funcionario : ${funcionarios}">
-                <td>
-                    <!-- Nome como link -->
-                    <a th:href="@{${funcionario[2].toLowerCase() + '/' + funcionario[0]}}" th:text="${funcionario[1]}"></a>
-                </td>
-                <td th:text="${funcionario[2]}"></td> <!-- Tipo -->
-            </tr>
-            <!-- Caso nenhum funcionário esteja registrado -->
-            <tr th:if="${funcionarios.isEmpty()}">
-                <td colspan="2">Nenhum funcionário encontrado.</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="/">Voltar para o início</a>
+    <div class="container">
+        <div class="leftsidebar">
+            <div class="logo">
+                <a href="/"><img src="/home/logo.png" alt="Logo Aybi Palace"></a>
+            </div>
+            <nav class="menu">
+                <h3>Home</h3>
+                <a href="/adm"><p>Logout
+                    <img style="margin-left: 2px; max-width: 10px; height: auto" src="/adm/sair.png">
+                </p></a>
+                <a href="/acomodacoes">Acomodações</a>
+                <a href="/experiencias">Experiências</a>
+                <a href="/historia">História</a>
+                <a href="/adm">Área Administrativa</a>
+            </nav>
+            <div class="footer-info">
+                <p>Contato</p>
+                <p1>aybipalace@gmail.com<br></p1>
+                <p1>+55 (81) 99999-9999</p1>
+                <p style="margin: 20px;"></p>
+                <p>Endereço</p>
+                <p1>Av. Aytobyca Pitola, 123<br>
+                - Recife - Pernambuco,<br>
+                CEP 12312-312</p1>
+            </div>
+        </div>
+        <div class="main-content">
+            <h1>Gerenciamento de Funcionários</h1>
+            <div class="square">
+                <a href="/homeGerente" class="back-link">< Voltar</a>
+                <div class="search-filter-container">
+                    <form method="get" action="/funcionarios" class="search-form">
+                        <input type="text" id="nome" name="nome" placeholder="Pesquisar nome">
+                        <button type="submit">Buscar</button>
+                    </form>
+                    
+                     <form action="/funcionarios" method="get" class="filter-form">		        
+				        <!-- Filtro por Função -->
+				       	<label for="filtro">Filtrar por Funcionário: </label>
+				        <select name="tipo">
+				            <option value="">Todos</option>
+				            <option value="Faxineiro">Faxineiro</option>
+				            <option value="Instrutor">Instrutor</option>
+				            <option value="Bartender">Bartender</option>
+				        </select>
+				
+				        <button type="submit">Filtrar</button>
+				    </form>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>CPF</th>
+                            <th>Departamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="funcionario : ${funcionarios}">
+                            <td th:text="${funcionario[1]}"></td> <!-- Nome -->
+                            <td th:text="${funcionario[2]}"></td> <!-- Tipo -->
+                            <td th:text="${funcionario[0]}"></td> <!-- CPF -->
+                            <td th:text="${funcionario[3]}"></td> <!-- Departamento -->
+                        </tr>
+                        <tr th:if="${funcionarios.isEmpty()}">
+                            <td colspan="4">Nenhum funcionário encontrado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

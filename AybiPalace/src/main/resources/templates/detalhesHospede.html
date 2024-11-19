@@ -1,22 +1,315 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Hóspede</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalhes do Hóspede</title>
+<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    color: black;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.leftsidebar {
+    flex-shrink: 0;
+    width: 280px;
+    height: 100vh;
+    background: rgb(149, 115, 85, 0.2);
+    z-index: 9;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.leftsidebar a {
+    font-family: Merriweather, sans-serif;
+    margin: 55px 0;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 19px;
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.leftsidebar .logo img {
+    height: 95px;
+    vertical-align: middle;
+    margin: 15px auto 0;
+}
+
+.menu a {
+    margin-bottom: 40px;
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu h3 {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    color: #A2845E;
+    margin-top: 20px;
+}
+
+.menu p {
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.footer-info {
+	position: relative;
+    margin-top: 111px;
+}
+
+.footer-info p {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+    font-weight: bold;
+}
+
+.footer-info p1 {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #999;
+}
+
+/* Main Content */
+.main-content {
+	font-family: Merriweather, sans-serif;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-content h1 {
+	margin: 20px;
+	color: #6B4A05;
+}
+
+.square {
+    display: flex;
+	flex-direction: column;
+    width: 1027px;
+    height: 472px;
+    background: #EAE3DD;
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    align-items: flex-start;
+}
+
+.square ul {
+    list-style: none;
+    justify-content: space-between;
+    text-align: left;
+    padding: 0;
+    color: #463208;
+    margin-left: 350px;
+}
+
+.square ul li {
+    margin: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 20px;
+}
+
+th {
+	padding: 10px;
+    border: 1px solid #fff;
+	font-family: Montserrat, sans-serif;
+    background-color: #E5E3E1;
+    color: #6B4A05;
+    text-align: center;
+    line-height: 5px;
+}
+
+td {
+	padding: 10px;
+    border: 1px solid #fff;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+    text-decoration: none;
+}
+
+td a {
+    color: #6B4A05;
+}
+
+.back-link {
+    text-decoration: none;
+    font-family: Montserrat, sans-serif;
+    color: #412D03;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    text-align: left;
+}
+
+.back-link:hover {
+    color: #A2845E;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin: 10px 35px 0 0;
+}
+
+.search-form label {
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    color: #6B4A05;
+}
+
+.search-form input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #D8C59C;
+    border-radius: 5px;
+    font-family: Montserrat, sans-serif;
+}
+
+.search-form button {
+    background-color: #6B4A05;
+    color: #F4E7CA;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: Montserrat, sans-serif;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 5px;
+}
+
+.search-form button:hover {
+    background-color: #8B5E0A;
+}
+
+.filter-form {
+    display: flex;
+    justify-content: center;
+    width: 96%;
+    margin: 15px auto;
+}
+
+.filter-form button {
+    background-color: #E5E3E1;
+    color: #6B4A05;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: Montserrat, sans-serif;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+}
+
+.filter-form button:hover {
+    background-color: #D8C59C;
+}
+
+.status {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.status.available {
+    background-color: #4CAF50;
+}
+
+.status.unavailable {
+    background-color: #DC884B;
+}
+
+.btn {
+    background-color: #CDC7BC;
+    color: #FEF6E7;
+    padding: 4px 20px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);
+    font-size: 25px;
+    letter-spacing: .10px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+}
+
+</style>
 </head>
 <body>
-    <h1>Detalhes do Hóspede</h1>
-    <ul>
-        <li><strong>CPF:</strong> <span th:text="${hospede.cpf}"></span></li>
-        <li><strong>Nome:</strong> <span th:text="${hospede.nome}"></span></li>
-        <li><strong>Idade:</strong> <span th:text="${hospede.idade}"></span></li>
-        <li><strong>Email:</strong> <span th:text="${hospede.email}"></span></li>
-    </ul>
-
-    <h2>Quartos Alugados, Serviços e Tarifas do Bar</h2>
-    <table border="1">
-        <thead>
+    <div class="container">
+        <div class="leftsidebar">
+            <div class="logo">
+                <a href="/"><img src="/home/logo.png" alt="Logo Aybi Palace"></a>
+            </div>
+            <nav class="menu">
+            	<h3>Home</h3>
+            	<a href="/adm"><p>Logout
+            		<img style="margin-left: 2px; max-width: 10px; height: auto" src="/adm/sair.png">
+            	</p></a>
+                <a href="/acomodacoes">Acomodações</a>
+                <a href="/experiencias">Experiências</a>
+                <a href="/historia">História</a>
+                <a href="/adm">Área Administrativa</a>
+            </nav>
+            <div class="footer-info">
+                <p>Contato</p>
+                <p1>aybipalace@gmail.com<br></p1>
+                <p1>+55 (81) 99999-9999</p1>
+                <p style="margin: 20px;"></p>
+                
+                <p>Endereço</p>
+                <p1>Av. Aytobyca Pitola, 123<br>
+                - Recife - Pernambuco,<br>
+                CEP 12312-312</p1>
+            </div>
+        </div>
+        <div class="main-content">
+            <h1>Detalhes do Hóspede</h1>
+            <div class="square">
+            <a href="/homeGerente" class="back-link">< Voltar</a>
+                <ul>
+                	<li class="btn"><span th:text="${hospede.nome}"></span></li>
+                    <li><strong>CPF:</strong> <span th:text="${hospede.cpf}"></span></li>
+                    <li><strong>Idade:</strong> <span th:text="${hospede.idade}"></span></li>
+                    <li><strong>Email:</strong> <span th:text="${hospede.email}"></span></li>
+                </ul>
+	            <table>
+                <thead>
+                <tr>
+		            <th colspan="7" style="background-color: #898887; color: #FEF6E7; text-align: center; font-weight: bold;">CONTROLE DE HOSPEDE</th>
+		        </tr>
             <tr>
                 <th>Quarto</th>
                 <th>Check-in</th>
@@ -41,31 +334,34 @@
                 <td colspan="7">Nenhum quarto alugado.</td>
             </tr>
         </tbody>
-    </table>
-
-    <h2>Dependentes</h2>
-    <table border="1">
-        <thead>
+		<thead>
             <tr>
-                <th>CPF</th>
-                <th>Nome</th>
-                <th>Idade</th>
+                <th>Quarto</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Status do Pagamento</th>
+                <th>Instrutor</th>
+                <th>Serviço</th>
+                <th>Tarifa do Bar</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Itera sobre os dependentes -->
-            <tr th:each="dependente : ${dependentes}">
-                <td th:text="${dependente.cpf}"></td> <!-- CPF do Dependente -->
-                <td th:text="${dependente.nome}"></td> <!-- Nome do Dependente -->
-                <td th:text="${dependente.idade}"></td> <!-- Idade do Dependente -->
+            <tr th:each="quarto : ${quartosComServicosEBares}">
+                <td th:text="${quarto[0]}"></td>
+                <td th:text="${#dates.format(quarto[1], 'dd/MM/yyyy')}"></td>
+                <td th:text="${#dates.format(quarto[2], 'dd/MM/yyyy')}"></td>
+                <td th:text="${quarto[3] == 1 ? 'Realizado' : 'Pendente'}"></td>
+                <td th:text="${quarto[5] != null ? quarto[5] : '-'}"></td>
+                <td th:text="${quarto[6] != null ? quarto[6] : '-'}"></td>
+                <td th:text="${quarto[7] != null ? ('R$ ' + quarto[7]) : '-'}"></td>
             </tr>
-            <!-- Caso não haja dependentes -->
-            <tr th:if="${dependentes.isEmpty()}">
-                <td colspan="3">Nenhum dependente registrado.</td>
+            <tr th:if="${quartosComServicosEBares.isEmpty()}">
+                <td colspan="7">Nenhum quarto alugado.</td>
             </tr>
-        </tbody>
-    </table>
-
-    <a href="/hospedes">Voltar para a lista de hóspedes</a>
+            </table>
+        </tbody>		
+   		 </div>
+	    </div>
+	 </div>
 </body>
 </html>
